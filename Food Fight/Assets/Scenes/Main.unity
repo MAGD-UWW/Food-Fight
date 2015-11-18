@@ -96,7 +96,6 @@ GameObject:
   - 114: {fileID: 83161858}
   - 114: {fileID: 83161857}
   - 114: {fileID: 83161856}
-  - 114: {fileID: 83161855}
   - 114: {fileID: 83161854}
   m_Layer: 0
   m_Name: Manager
@@ -113,18 +112,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 83161853}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81fe64ef3fbf82f4ba8b12eaeba1f043, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &83161855
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 83161853}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a24dd63eab12f0d43a1c1ba2dcad9edd, type: 3}
+  m_Script: {fileID: 11500000, guid: 40a6d27effd9fcf48911150ad74f46b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &83161856
