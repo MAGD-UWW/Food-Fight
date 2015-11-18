@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class PlayerOneManager : MonoBehaviour, IGameManager {
-<<<<<<< HEAD
 	public ManagerStatus status { get; private set; }
 	public int playerOneHealth { get; set; }
 	//Anson fixed spelling
@@ -14,16 +13,7 @@ public class PlayerOneManager : MonoBehaviour, IGameManager {
 	
 	//Anson what the player is picking up
 	GameObject food;
-	
-=======
-	public ManagerStatus status {get; private set;}
-	public int playerOneHealth { get; set; }
-	public int playerOneMaxHalth { get; set; }
-	public int playerOneFoodCount { get; set; }
-	public int playerOneMaxFoodCount { get; set; }
-	public int playerOneActionPoints { get; set; }
 
->>>>>>> refs/remotes/origin/master
 	public void Startup() {
 		Debug.Log ("Player One Manager has started");
 		status = ManagerStatus.Started;
