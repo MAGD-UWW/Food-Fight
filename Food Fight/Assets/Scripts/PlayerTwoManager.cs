@@ -3,6 +3,7 @@ using System.Collections;
 
 public class PlayerTwoManager : MonoBehaviour, IGameManager {
 	public ManagerStatus status { get; private set; }
+<<<<<<< HEAD
 	public int playerTwoHealth { get; set; }
 	//Anson fixed spelling
 	public int playerTwoMaxHealth { get; set; }
@@ -10,6 +11,13 @@ public class PlayerTwoManager : MonoBehaviour, IGameManager {
 	public int playerTwoMaxFoodCount { get; set; }
 	public int playerTwoActionPoints { get; set; }
 	//Add any variables you can think of let me know
+=======
+	public int playerTwoHealth { get; private set; }
+	public int playerTwoMaxHalth { get; private set; }
+	public int playerTwoFoodCount { get; private set; }
+	public int playerTwoMaxFoodCount { get; private set; }
+	public int playerTwoActionPoints { get; private set; }
+>>>>>>> refs/remotes/origin/master
 
 	//Anson what the player is picking up
 	GameObject food;
