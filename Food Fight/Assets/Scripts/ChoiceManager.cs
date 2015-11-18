@@ -6,6 +6,7 @@ public class ChoiceManager : MonoBehaviour, IGameManager {
 
 	// this is Nick's awesome edit!
 	// this is eric's cooler edit!
+	// this is Christian's OK edit....
 
 
 	//Declare Choice variables
