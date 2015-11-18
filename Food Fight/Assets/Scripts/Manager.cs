@@ -7,8 +7,7 @@ using System.Collections.Generic;
 public class Manager : MonoBehaviour {
     public PlayerOneManager Player1 { get; private set; } //Static code to reference to
     public PlayerTwoManager Player2 { get; private set; } //Static code to reference to
-	public ChoiceManager Choice { get; private set; }
-	public ExecutionManager Execution { get; private set; } 
+	public ActionManager Action { get; private set; } 
 
 
     private List<IGameManager> _startSequence; //Creates Private list of Managers and loops on start(Blank Variable)
@@ -17,15 +16,13 @@ public class Manager : MonoBehaviour {
 		Debug.Log ("Getting manager components");
         Player1 = GetComponent<PlayerOneManager>(); //Assigns component to the manager property
 		Player2 = GetComponent<PlayerTwoManager>(); //Assigns component to the manager property
-		Choice = GetComponent<ChoiceManager> (); //Assigns component to the manager property
-		Execution = GetComponent<ExecutionManager> (); //Assigns component to the manager property
+		Action = GetComponent<ActionManager> ();
 
        
 		_startSequence = new List<IGameManager>();
 		_startSequence.Add (Player1);
 		_startSequence.Add (Player2);
-		_startSequence.Add (Choice);
-		_startSequence.Add (Execution);
+		_startSequence.Add (Action);
 
 
         StartCoroutine(StartupManagers());
