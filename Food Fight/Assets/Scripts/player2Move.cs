@@ -28,7 +28,7 @@ public class player2Move : MonoBehaviour {
 	}
 	
 	void CheckGrid(){
-		if ((Input.GetKeyDown (KeyCode.Y)) && (p8 == false) && (p9 == false) && (p10 == false)) {
+		if ((Input.GetKeyDown (KeyCode.I)) && (p8 == false) && (p9 == false) && (p10 == false)) {
 			transform.position = pos6.position;
 			p6 = true;
 			p7 = false;
@@ -39,7 +39,7 @@ public class player2Move : MonoBehaviour {
 			//moves[0] = "a";
 			//Debug.Log ("array 1 " + moves[0]);
 		}
-		if ((Input.GetKeyDown (KeyCode.U)) && (p9 == false) && (p10 == false)) {
+		if ((Input.GetKeyDown (KeyCode.O)) && (p9 == false) && (p10 == false)) {
 			transform.position = pos7.position;
 			p7 = true;
 			p6 = false;
@@ -47,7 +47,7 @@ public class player2Move : MonoBehaviour {
 			p9 = false;
 			p10 = false;
 		}
-		if ((Input.GetKeyDown (KeyCode.I)) && (p6 == false) && (p10 == false)){
+		if ((Input.GetKeyDown (KeyCode.P)) && (p6 == false) && (p10 == false)){
 			transform.position = pos8.position;
 			p8 = true;
 			p6 = false;
@@ -55,7 +55,7 @@ public class player2Move : MonoBehaviour {
 			p9 = false;
 			p10 = false;
 		}
-		if ((Input.GetKeyDown (KeyCode.O)) && (p6 == false) && (p7 == false)){
+		if ((Input.GetKeyDown (KeyCode.LeftBracket)) && (p6 == false) && (p7 == false)){
 			transform.position = pos9.position;
 			p9 = true;
 			p6 = false;
@@ -63,7 +63,7 @@ public class player2Move : MonoBehaviour {
 			p8 = false;
 			p10 = false;
 		}
-		if ((Input.GetKeyDown (KeyCode.P)) && (p6 == false) && (p7 == false) && (p8 == false)){
+		if ((Input.GetKeyDown (KeyCode.RightBracket)) && (p6 == false) && (p7 == false) && (p8 == false)){
 			transform.position = pos10.position;
 			p10 = true;
 			p6 = false;

@@ -29,7 +29,7 @@ public class player1Movement : MonoBehaviour {
 	}
 
 	void CheckGrid(){
-		if ((Input.GetKeyDown (KeyCode.A)) && (p3 == false) && (p4 == false) && (p5 == false)) {
+		if ((Input.GetKeyDown (KeyCode.Tab)) && (p3 == false) && (p4 == false) && (p5 == false)) {
 			transform.position = pos1.position;
 			p1 = true;
 			p2 = false;
@@ -40,7 +40,7 @@ public class player1Movement : MonoBehaviour {
 			//moves[0] = "a";
 			//Debug.Log ("array 1 " + moves[0]);
 		}
-		if ((Input.GetKeyDown (KeyCode.S)) && (p4 == false) && (p5 == false)) {
+		if ((Input.GetKeyDown (KeyCode.Q)) && (p4 == false) && (p5 == false)) {
 			transform.position = pos2.position;
 			p2 = true;
 			p1 = false;
@@ -48,7 +48,7 @@ public class player1Movement : MonoBehaviour {
 			p4 = false;
 			p5 = false;
 		}
-		if ((Input.GetKeyDown (KeyCode.D)) && (p1 == false) && (p5 == false)){
+		if ((Input.GetKeyDown (KeyCode.W)) && (p1 == false) && (p5 == false)){
 			transform.position = pos3.position;
 			p3 = true;
 			p1 = false;
@@ -56,7 +56,7 @@ public class player1Movement : MonoBehaviour {
 			p4 = false;
 			p5 = false;
 		}
-		if ((Input.GetKeyDown (KeyCode.F)) && (p1 == false) && (p2 == false)){
+		if ((Input.GetKeyDown (KeyCode.E)) && (p1 == false) && (p2 == false)){
 			transform.position = pos4.position;
 			p4 = true;
 			p1 = false;
@@ -64,7 +64,7 @@ public class player1Movement : MonoBehaviour {
 			p3 = false;
 			p5 = false;
 		}
-		if ((Input.GetKeyDown (KeyCode.G)) && (p1 == false) && (p2 == false) && (p3 == false)){
+		if ((Input.GetKeyDown (KeyCode.R)) && (p1 == false) && (p2 == false) && (p3 == false)){
 			transform.position = pos5.position;
 			p5 = true;
 			p1 = false;
