@@ -3,6 +3,7 @@ using System.Collections;
 
 public class PlayerOneManager : MonoBehaviour, IGameManager {
 	public ManagerStatus status { get; private set; }
+	public GameObject playerOne { get; set; }
 	public int playerOneHealth { get; set; }
 	//Anson fixed spelling
 	public int playerOneMaxHealth { get; set; }
@@ -12,19 +13,19 @@ public class PlayerOneManager : MonoBehaviour, IGameManager {
 	//Add any variables you can think of let me know
 	
 	//Anson what the player is picking up
-	GameObject food;
+	//GameObject food;
 
 	public void Startup() {
 		Debug.Log ("Player One Manager has started");
 		status = ManagerStatus.Started;
 		//Anson need to reference the food 
-		food = GameObject.FindWithTag ("food");
+		//food = GameObject.FindWithTag ("food"); *Uncomment When food is added to the main scene - Eric 11/19/2015
 	}
 	
 	void Update () {	
 		//Anson When the food count reaches 3 they can pickup no more
 		if (playerOneFoodCount == 3) {
-			carry (food);
+			//carry (food); *Uncomment When food is added to the main scene - Eric 11/19/2015
 		} else {
 			pickup ();
 		}
