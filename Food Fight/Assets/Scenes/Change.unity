@@ -370,6 +370,7 @@ GameObject:
   - 4: {fileID: 1634966213}
   - 212: {fileID: 1634966212}
   - 114: {fileID: 1634966214}
+  - 114: {fileID: 1634966215}
   m_Layer: 0
   m_Name: GreenCreature
   m_TagString: Untagged
@@ -431,6 +432,17 @@ MonoBehaviour:
   pos8: {fileID: 0}
   pos9: {fileID: 0}
   pos10: {fileID: 0}
+--- !u!114 &1634966215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1634966211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb5affd136c1cd347bba0b624d263ca9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1868284398
 GameObject:
   m_ObjectHideFlags: 0
@@ -441,6 +453,7 @@ GameObject:
   - 4: {fileID: 1868284401}
   - 212: {fileID: 1868284400}
   - 114: {fileID: 1868284399}
+  - 114: {fileID: 1868284402}
   m_Layer: 0
   m_Name: BlueCreature
   m_TagString: Untagged
@@ -502,6 +515,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
+--- !u!114 &1868284402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1868284398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16893089536521a4cac9f01e453e2be8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pos1: {fileID: 0}
+  pos2: {fileID: 0}
+  pos3: {fileID: 0}
+  pos4: {fileID: 0}
+  pos5: {fileID: 0}
 --- !u!1 &2062818466
 GameObject:
   m_ObjectHideFlags: 0
