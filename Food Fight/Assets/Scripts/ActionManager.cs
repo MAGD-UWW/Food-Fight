@@ -9,11 +9,15 @@ public class ActionManager : MonoBehaviour, IGameManager {
 	public PlayerTwoManager player2;
 	public Vector2[] playerOneChoices;
 	public Vector2[] playerTwoChoices;
-	public enum playerActions{ move, toss, grab };
+	public enum playerActions{ move, toss, grab, skip };
 	public enum playerOneGrid { buttonTab, buttonQ, buttonW, buttonE, buttonR };
 	public enum playerTwoGrid { buttonI, buttonO, buttonP, buttonLS, button5RS }; //LS = left square [ || RS = right square ]
 
 	public void Startup () {
+		//Enumerators
+		playerActions playerOneActions;
+		playerActions playerTwoActions;
+		//playerOneActions = playerActions.move;
 		player1 = GameObject.Find ("Manager").GetComponent<PlayerOneManager>();
 		player2 = GameObject.Find ("Manager").GetComponent<PlayerTwoManager>();
 		playerOneChoices = new Vector2[player1.playerOneActionPoints];
@@ -34,6 +38,8 @@ public class ActionManager : MonoBehaviour, IGameManager {
 		//if(Input.anyKey E)
 			//playerOneChoices[player1.playerOneActionPoints].x = playerActions.move;
 			//player1.playerOneActionPoints++;
+
+		//Updates and "prints out" the choices in order
 
 	
 	}
