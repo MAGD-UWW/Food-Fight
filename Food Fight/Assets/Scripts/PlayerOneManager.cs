@@ -11,7 +11,8 @@ public class PlayerOneManager : MonoBehaviour, IGameManager {
 	public int playerOneMaxFoodCount { get; set; }
 	public int playerOneActionPoints { get; set; }
 	//Add any variables you can think of let me know
-	
+	//public int playerTwoSkip { get; set; }
+
 	//Anson what the player is picking up
 	//GameObject food;
 
