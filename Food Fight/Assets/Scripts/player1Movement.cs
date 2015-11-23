@@ -9,6 +9,8 @@ public class player1Movement : MonoBehaviour {
 	public Transform pos5;
 	//string spot;
 	string[] moves = new string[3];
+
+	bool p1Move = false; //set false so have to activate it to make usable
 	bool p1 = false;
 	bool p2 = false;
 	bool p3 = false;
@@ -29,34 +31,41 @@ public class player1Movement : MonoBehaviour {
 	}
 
 	void CheckGrid(){
-		if ((Input.GetKeyDown (KeyCode.Tab)) && (p3 == false) && (p4 == false) && (p5 == false)) {
+		if (Input.GetKey (KeyCode.A)) {
+			p1Move = true;
+		}
+
+		if ((p1Move == true) && (Input.GetKeyDown (KeyCode.Tab)) && (p3 == false) && (p4 == false) && (p5 == false)) {
 			transform.position = pos1.position;
 			p1 = true;
 			p2 = false;
 			p3 = false;
 			p4 = false;
 			p5 = false;
+			p1Move = false;
 			//spot = "a";
 			//moves[0] = "a";
 			//Debug.Log ("array 1 " + moves[0]);
 		}
-		if ((Input.GetKeyDown (KeyCode.Q)) && (p4 == false) && (p5 == false)) {
+		if ((p1Move == true) && (Input.GetKeyDown (KeyCode.Q)) && (p4 == false) && (p5 == false)) {
 			transform.position = pos2.position;
 			p2 = true;
 			p1 = false;
 			p3 = false;
 			p4 = false;
 			p5 = false;
+			p1Move = false;
 		}
-		if ((Input.GetKeyDown (KeyCode.W)) && (p1 == false) && (p5 == false)){
+		if ((p1Move == true) && (Input.GetKeyDown (KeyCode.W)) && (p1 == false) && (p5 == false)){
 			transform.position = pos3.position;
 			p3 = true;
 			p1 = false;
 			p2 = false;
 			p4 = false;
 			p5 = false;
+			p1Move = false;
 		}
-		if ((Input.GetKeyDown (KeyCode.E)) && (p1 == false) && (p2 == false)){
+		if ((p1Move == true) && (Input.GetKeyDown (KeyCode.E)) && (p1 == false) && (p2 == false)){
 			transform.position = pos4.position;
 			p4 = true;
 			p1 = false;
@@ -64,13 +73,14 @@ public class player1Movement : MonoBehaviour {
 			p3 = false;
 			p5 = false;
 		}
-		if ((Input.GetKeyDown (KeyCode.R)) && (p1 == false) && (p2 == false) && (p3 == false)){
+		if ((p1Move == true) && (Input.GetKeyDown (KeyCode.R)) && (p1 == false) && (p2 == false) && (p3 == false)){
 			transform.position = pos5.position;
 			p5 = true;
 			p1 = false;
 			p2 = false;
 			p3 = false;
 			p4 = false;
+			p1Move = false;
 		}
 	}
 
