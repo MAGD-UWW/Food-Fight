@@ -4,7 +4,7 @@ using System.Collections;
 public class actionScript : MonoBehaviour {
 	public PlayerOneManager player1;
 	public PlayerTwoManager player2;
-	public ActionManager playerActions{ move, toss, grab, skip };
+	public ActionManager playerActions;
 
 	// Use this for initialization
 	void Start () {
