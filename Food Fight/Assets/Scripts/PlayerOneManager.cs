@@ -7,14 +7,15 @@ public class PlayerOneManager : MonoBehaviour, IGameManager {
 	public int playerOneHealth { get; set; }
 	public int playerOneMaxHealth { get; set; }
 	public int playerOneFoodCount { get; set; }
-	public int playerOneMaxFoodCount { get; set; }
 	public int playerOneActionPoints { get; set; }
-	public int playerOneTotalActionPoints { get; set; }
 
 	public void Startup() {
 		Debug.Log ("Player One Manager has started");
 		status = ManagerStatus.Started;
-		playerOneTotalActionPoints = 3; //Sets total action points to 3
+		playerOneActionPoints = 0;
+		playerOneFoodCount = 0;
+		playerOneMaxHealth = 100;
+		playerOneHealth = playerOneMaxHealth;
 	}
 	
 	void Update () {	
