@@ -35,15 +35,13 @@ public class player1Movement : MonoBehaviour {
 	}
 
 	void CheckGrid(){
-<<<<<<< HEAD
+
 		if (Input.GetKey (KeyCode.A)) {
 			p1Move = true;
 		}
 
-		if ((p1Move == true) && (Input.GetKeyDown (KeyCode.Tab)) && (p3 == false) && (p4 == false) && (p5 == false)) {
-=======
 		if ((Input.GetKeyDown (KeyCode.Tab)) && (p3 == false) && (p4 == false) && (p5 == false)) { //Changed Keycode A to Tab 11/26/15 Eric Olson
->>>>>>> refs/remotes/origin/master
+
 			transform.position = pos1.position;
 			p1 = true;
 			p2 = false;
@@ -55,11 +53,8 @@ public class player1Movement : MonoBehaviour {
 			//moves[0] = "a";
 			//Debug.Log ("array 1 " + moves[0]);
 		}
-<<<<<<< HEAD
-		if ((p1Move == true) && (Input.GetKeyDown (KeyCode.Q)) && (p4 == false) && (p5 == false)) {
-=======
+
 		if ((Input.GetKeyDown (KeyCode.Q)) && (p4 == false) && (p5 == false)) { //Changed Keycode S to Q 11/26/15 Eric Olson
->>>>>>> refs/remotes/origin/master
 			transform.position = pos2.position;
 			p2 = true;
 			p1 = false;
@@ -68,11 +63,8 @@ public class player1Movement : MonoBehaviour {
 			p5 = false;
 			p1Move = false;
 		}
-<<<<<<< HEAD
-		if ((p1Move == true) && (Input.GetKeyDown (KeyCode.W)) && (p1 == false) && (p5 == false)){
-=======
+
 		if ((Input.GetKeyDown (KeyCode.W)) && (p1 == false) && (p5 == false)){ //Changed Keyboard D to W 11/26/15 Eric Olson
->>>>>>> refs/remotes/origin/master
 			transform.position = pos3.position;
 			p3 = true;
 			p1 = false;
@@ -81,11 +73,8 @@ public class player1Movement : MonoBehaviour {
 			p5 = false;
 			p1Move = false;
 		}
-<<<<<<< HEAD
-		if ((p1Move == true) && (Input.GetKeyDown (KeyCode.E)) && (p1 == false) && (p2 == false)){
-=======
+
 		if ((Input.GetKeyDown (KeyCode.E)) && (p1 == false) && (p2 == false)){ //Changed Keycode F to E 11/26/15 Eric Olson
->>>>>>> refs/remotes/origin/master
 			transform.position = pos4.position;
 			p4 = true;
 			p1 = false;
@@ -93,11 +82,8 @@ public class player1Movement : MonoBehaviour {
 			p3 = false;
 			p5 = false;
 		}
-<<<<<<< HEAD
-		if ((p1Move == true) && (Input.GetKeyDown (KeyCode.R)) && (p1 == false) && (p2 == false) && (p3 == false)){
-=======
+
 		if ((Input.GetKeyDown (KeyCode.R)) && (p1 == false) && (p2 == false) && (p3 == false)){ //Changed Keycode G to R 11/26/15 Eric Olson
->>>>>>> refs/remotes/origin/master
 			transform.position = pos5.position;
 			p5 = true;
 			p1 = false;
@@ -109,4 +95,5 @@ public class player1Movement : MonoBehaviour {
 	}
 
 
-}
+	}
+
