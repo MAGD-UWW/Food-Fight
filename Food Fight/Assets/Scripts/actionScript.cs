@@ -28,10 +28,10 @@ public class actionScript : MonoBehaviour {
 	}
 
 	void Actions(){
-		pActions.playerOneChoices[player1.playerOneActionPoints];
+		pActions.playerOneChoices[player1.playerOneMaxActionPoints];
 		// inputs for throwing
 		if(Input.GetKey(KeyCode.D)){
-			pActions.playerOneChoices[player1.playerOneActionPoints].x = toss;
+			pActions.playerOneChoices[player1.playerOneActionPoints] = playerActions.move;
 			p1throw = true;
 		}
 		if((p1throw == true) && (Input.GetKey(KeyCode.Tab))){
@@ -77,6 +77,30 @@ public class actionScript : MonoBehaviour {
 			p3 = false;
 			p4 = false;
 			p5 = false;
+			p1move = false;
+		}
+		if ((p1move == true)&&(Input.GetKeyDown (KeyCode.W)) && (p1 == false) && (p5 == false)){ 
+			p3 = true;
+			p1 = false;
+			p2 = false;
+			p4 = false;
+			p5 = false;
+			p1move = false;
+		}
+		if ((p1move == true) &&(Input.GetKeyDown (KeyCode.E)) && (p1 == false) && (p2 == false)){ 
+			p4 = true;
+			p1 = false;
+			p2 = false;
+			p3 = false;
+			p5 = false;
+			p1move = false;
+		}
+		if ((p1move == true) &&(Input.GetKeyDown (KeyCode.R)) && (p1 == false) && (p2 == false) && (p3 == false)){ 
+			p5 = true;
+			p1 = false;
+			p2 = false;
+			p3 = false;
+			p4 = false;
 			p1move = false;
 		}
 
