@@ -28,39 +28,40 @@ public class actionScript : MonoBehaviour {
 	}
 
 	void Actions(){
-		pActions.playerOneChoices[player1.playerOneMaxActionPoints];
-		// inputs for throwing
+		//ACTION SELECTION
 		if(Input.GetKey(KeyCode.D)){
-			pActions.playerOneChoices[player1.playerOneActionPoints] = playerActions.move;
+			pActions.playerOneActions[player1.playerOneActionPoints] = ActionManager.playerActions.toss;
 			p1throw = true;
 		}
+		//GRID SELECTION SPOT
 		if((p1throw == true) && (Input.GetKey(KeyCode.Tab))){
-			pActions.playerOneChoices[player1.playerOneActionPoints].y = buttonTab;
+			pActions.player1Grid[player1.playerOneActionPoints] = ActionManager.playerOneGrid.buttonTab;
 			p1throw = false;
 			player1.playerOneActionPoints ++;
 		}
 		if((p1throw == true) && (Input.GetKey(KeyCode.Q))){
-			pActions.playerOneChoices[player1.playerOneActionPoints].y = buttonQ;
+			pActions.player1Grid[player1.playerOneActionPoints] = ActionManager.playerOneGrid.buttonQ;
 			p1throw = false;
 			player1.playerOneActionPoints ++;
 		}
 		if((p1throw == true) && (Input.GetKey(KeyCode.W))){
-			pActions.playerOneChoices[player1.playerOneActionPoints].y = buttonW;
+			pActions.player1Grid[player1.playerOneActionPoints] = ActionManager.playerOneGrid.buttonW;
 			p1throw = false;
 			player1.playerOneActionPoints ++;
 		}
 		if((p1throw == true) && (Input.GetKey(KeyCode.E))){
-			pActions.playerOneChoices[player1.playerOneActionPoints].y = buttonE;
+			pActions.player1Grid[player1.playerOneActionPoints] = ActionManager.playerOneGrid.buttonE;
 			p1throw = false;
 			player1.playerOneActionPoints ++;
 		}
 		if((p1throw == true) && (Input.GetKey(KeyCode.R))){
-			pActions.playerOneChoices[player1.playerOneActionPoints].y = buttonR;
+			pActions.player1Grid[player1.playerOneActionPoints] = ActionManager.playerOneGrid.buttonR;
 			p1throw = false;
 			player1.playerOneActionPoints ++;
 		}
-		// inputs for moving
+		// ACTION SELCETION
 		if(Input.GetKey (KeyCode.A)){
+			pActions.playerOneActions[player1.playerOneActionPoints] = ActionManager.playerActions.move;
 			p1move = true;
 		}
 		if ((p1move == true) && (Input.GetKeyDown (KeyCode.Tab)) && (p3 == false) && (p4 == false) && (p5 == false)) {
