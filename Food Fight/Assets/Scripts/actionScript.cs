@@ -96,7 +96,7 @@ public class actionScript : MonoBehaviour {
 			Debug.Log ("p1 move to position 1");
 		}
 		if ((p1move == true) && (Input.GetKey (KeyCode.Q)) && (p4 == false) && (p5 == false)) { 
-			pActions.player1Grid[player1.playerOneActionPoints] = ActionManager.playerOneGrid.buttonTab;
+			pActions.player1Grid[player1.playerOneActionPoints] = ActionManager.playerOneGrid.buttonQ;
 			player1.playerOneActionPoints ++;
 
 			p2 = true;
@@ -108,7 +108,7 @@ public class actionScript : MonoBehaviour {
 			Debug.Log ("p1 move to position 2");
 		}
 		if ((p1move == true)&&(Input.GetKey (KeyCode.W)) && (p1 == false) && (p5 == false)){ 
-			pActions.player1Grid[player1.playerOneActionPoints] = ActionManager.playerOneGrid.buttonTab;
+			pActions.player1Grid[player1.playerOneActionPoints] = ActionManager.playerOneGrid.buttonW;
 			player1.playerOneActionPoints ++;
 
 			p3 = true;
@@ -120,7 +120,7 @@ public class actionScript : MonoBehaviour {
 			Debug.Log ("p1 move to position 3");
 		}
 		if ((p1move == true) &&(Input.GetKey (KeyCode.E)) && (p1 == false) && (p2 == false)){ 
-			pActions.player1Grid[player1.playerOneActionPoints] = ActionManager.playerOneGrid.buttonTab;
+			pActions.player1Grid[player1.playerOneActionPoints] = ActionManager.playerOneGrid.buttonE;
 			player1.playerOneActionPoints ++;
 
 			p4 = true;
@@ -132,7 +132,7 @@ public class actionScript : MonoBehaviour {
 			Debug.Log ("p1 move to position 4");
 		}
 		if ((p1move == true) &&(Input.GetKey (KeyCode.R)) && (p1 == false) && (p2 == false) && (p3 == false)){ 
-			pActions.player1Grid[player1.playerOneActionPoints] = ActionManager.playerOneGrid.buttonTab;
+			pActions.player1Grid[player1.playerOneActionPoints] = ActionManager.playerOneGrid.buttonR;
 			player1.playerOneActionPoints ++;
 
 			p5 = true;
