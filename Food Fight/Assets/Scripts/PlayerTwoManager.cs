@@ -9,17 +9,16 @@ public class PlayerTwoManager : MonoBehaviour, IGameManager {
 	public int playerTwoFoodCount { get; set; }
 	public int playerTwoMaxFoodCount { get; set; }
 	public int playerTwoActionPoints { get; set; }
-<<<<<<< HEAD
+
 	//Add any variables you can think of let me know
 	//public int playerTwoSkip { get; set; }
 
 	//Anson what the player is picking up
 	GameObject food;
-=======
+
 	public int playerTwoTotalActionPoints { get; set; }
 
-	
->>>>>>> refs/remotes/origin/master
+
 
 	public void Startup() {
 		Debug.Log ("Player Two Manager has started");
