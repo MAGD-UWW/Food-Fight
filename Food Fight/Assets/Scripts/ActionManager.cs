@@ -34,7 +34,7 @@ public class ActionManager : MonoBehaviour, IGameManager {
 	//Should I instead, make these "move" actions within the playerActions enumerator? - 11/26/15 Eric Olson
 	public enum playerTwoGrid { //Buttons player two uses
 		buttonI,
-		buttonO1, 
+		buttonO, 
 		buttonP, 
 		buttonLS, 
 		buttonRS

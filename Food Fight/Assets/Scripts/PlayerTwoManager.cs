@@ -7,6 +7,7 @@ public class PlayerTwoManager : MonoBehaviour, IGameManager {
 	public int playerTwoHealth { get; set; }
 	public int playerTwoMaxHealth { get; set; }
 	public int playerTwoFoodCount { get; set; }
+	public int playerTwoMaxFoodCount { get; set; }
 	public int playerTwoActionPoints { get; set; }
 	public int playerTwoMaxActionPoints { get; set; }
 
@@ -18,6 +19,7 @@ public class PlayerTwoManager : MonoBehaviour, IGameManager {
 		playerTwoActionPoints = 0;
 		playerTwoMaxActionPoints = 3;
 		playerTwoFoodCount = 0;
+		playerTwoMaxFoodCount = 2;
 		playerTwoMaxHealth = 100;
 		playerTwoHealth = playerTwoMaxHealth;
 	}
