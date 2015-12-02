@@ -8,6 +8,7 @@ public class PlayerTwoManager : MonoBehaviour, IGameManager {
 	public int playerTwoMaxHealth { get; set; }
 	public int playerTwoFoodCount { get; set; }
 	public int playerTwoActionPoints { get; set; }
+	public int playerTwoMaxActionPoints { get; set; }
 
 	
 
@@ -15,6 +16,7 @@ public class PlayerTwoManager : MonoBehaviour, IGameManager {
 		Debug.Log ("Player Two Manager has started");
 		status = ManagerStatus.Started;
 		playerTwoActionPoints = 0;
+		playerTwoMaxActionPoints = 3;
 		playerTwoFoodCount = 0;
 		playerTwoMaxHealth = 100;
 		playerTwoHealth = playerTwoMaxHealth;
