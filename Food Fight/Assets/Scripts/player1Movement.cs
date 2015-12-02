@@ -11,6 +11,8 @@ public class player1Movement : MonoBehaviour {
 	public PlayerOneManager player1; //Added player one manager 11/26/15 Eric Olson
 	//string spot;
 	string[] moves = new string[3];
+
+	bool p1Move = false; //set false so have to activate it to make usable
 	bool p1 = false;
 	bool p2 = false;
 	bool p3 = false;
@@ -33,17 +35,25 @@ public class player1Movement : MonoBehaviour {
 	}
 
 	void CheckGrid(){
+
+		if (Input.GetKey (KeyCode.A)) {
+			p1Move = true;
+		}
+
 		if ((Input.GetKeyDown (KeyCode.Tab)) && (p3 == false) && (p4 == false) && (p5 == false)) { //Changed Keycode A to Tab 11/26/15 Eric Olson
+
 			transform.position = pos1.position;
 			p1 = true;
 			p2 = false;
 			p3 = false;
 			p4 = false;
 			p5 = false;
+			p1Move = false;
 			//spot = "a";
 			//moves[0] = "a";
 			//Debug.Log ("array 1 " + moves[0]);
 		}
+
 		if ((Input.GetKeyDown (KeyCode.Q)) && (p4 == false) && (p5 == false)) { //Changed Keycode S to Q 11/26/15 Eric Olson
 			transform.position = pos2.position;
 			p2 = true;
@@ -51,7 +61,9 @@ public class player1Movement : MonoBehaviour {
 			p3 = false;
 			p4 = false;
 			p5 = false;
+			p1Move = false;
 		}
+
 		if ((Input.GetKeyDown (KeyCode.W)) && (p1 == false) && (p5 == false)){ //Changed Keyboard D to W 11/26/15 Eric Olson
 			transform.position = pos3.position;
 			p3 = true;
@@ -59,7 +71,9 @@ public class player1Movement : MonoBehaviour {
 			p2 = false;
 			p4 = false;
 			p5 = false;
+			p1Move = false;
 		}
+
 		if ((Input.GetKeyDown (KeyCode.E)) && (p1 == false) && (p2 == false)){ //Changed Keycode F to E 11/26/15 Eric Olson
 			transform.position = pos4.position;
 			p4 = true;
@@ -68,6 +82,7 @@ public class player1Movement : MonoBehaviour {
 			p3 = false;
 			p5 = false;
 		}
+
 		if ((Input.GetKeyDown (KeyCode.R)) && (p1 == false) && (p2 == false) && (p3 == false)){ //Changed Keycode G to R 11/26/15 Eric Olson
 			transform.position = pos5.position;
 			p5 = true;
@@ -75,8 +90,10 @@ public class player1Movement : MonoBehaviour {
 			p2 = false;
 			p3 = false;
 			p4 = false;
+			p1Move = false;
 		}
 	}
 
 
-}
+	}
+
