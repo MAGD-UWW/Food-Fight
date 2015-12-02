@@ -9,20 +9,20 @@ public class PlayerOneManager : MonoBehaviour, IGameManager {
 	public int playerOneFoodCount { get; set; }
 	public int playerOneMaxFoodCount { get; set; }
 	public int playerOneActionPoints { get; set; }
-
-	//Add any variables you can think of let me know
-	//public int playerTwoSkip { get; set; }
-
-	//Anson what the player is picking up
-	//GameObject food;
-
 	public int playerOneTotalActionPoints { get; set; }
+	public int playerOneMaxActionPoints { get; set; }
+
 
 
 	public void Startup() {
 		Debug.Log ("Player One Manager has started");
 		status = ManagerStatus.Started;
-		playerOneTotalActionPoints = 3; //Sets total action points to 3
+		playerOneActionPoints = 0;
+		playerOneMaxActionPoints = 3;
+		playerOneFoodCount = 0;
+		playerOneMaxFoodCount = 2;
+		playerOneMaxHealth = 100;
+		playerOneHealth = playerOneMaxHealth;
 	}
 	
 	void Update () {	
