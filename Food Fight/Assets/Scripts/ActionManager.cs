@@ -41,7 +41,7 @@ public class ActionManager : MonoBehaviour, IGameManager {
 	}; //LS = left square bracket || RS = right square bracket
 
 	public void Startup () {
-		//playerOneActions = playerActions.move;
+		Debug.Log ("Action Manager has started!");
 		playerOneActions = new playerActions[player1.playerOneMaxActionPoints];
 		playerTwoActions = new playerActions[player2.playerTwoMaxActionPoints];
 		player1 = GameObject.Find ("Manager").GetComponent<PlayerOneManager>();

@@ -9,7 +9,10 @@ public class PlayerOneManager : MonoBehaviour, IGameManager {
 	public int playerOneFoodCount { get; set; }
 	public int playerOneMaxFoodCount { get; set; }
 	public int playerOneActionPoints { get; set; }
+	public int playerOneTotalActionPoints { get; set; }
 	public int playerOneMaxActionPoints { get; set; }
+
+
 
 	public void Startup() {
 		Debug.Log ("Player One Manager has started");
