@@ -4,6 +4,7 @@ using System.Collections;
 
 public class ExecutionScript : MonoBehaviour {
 	public Transform playerOneSprite;
+	public Transform playerTwoSprite;
 	public Transform pos1;
 	public Transform pos2;
 	public Transform pos3;
@@ -61,21 +62,33 @@ public class ExecutionScript : MonoBehaviour {
 				if(pActions.playerOneActions[player1.playerOneMaxActionPoints] == ActionManager.playerActions.skip) {
 					Debug.Log ("Player One Decided to skip!");
 				}
+				if(pActions.playerTwoActions[player2.playerTwoMaxActionPoints] == ActionManager.playerActions.move) {
+					playerTwoMove();
+				}
+				if(pActions.playerTwoActions[player2.playerTwoMaxActionPoints] == ActionManager.playerActions.toss) {
+					playerTwoToss();
+				}
+				if(pActions.playerTwoActions[player2.playerTwoMaxActionPoints] == ActionManager.playerActions.grab) {
+					playerTwoGrab ();
+				}
+				if(pActions.playerTwoActions[player2.playerTwoMaxActionPoints] == ActionManager.playerActions.skip) {
+					Debug.Log ("Player Two Decided to skip!");
+				}
 			}
 		}
 	}
 	void playerOneMove() {
 		if(pActions.player1Grid[player1.playerOneMaxActionPoints] == ActionManager.playerOneGrid.buttonTab) {
 			playerOneSprite.position = pos1.position; //[X][][][][]
-			Debug.Log ("Player One is moving to it's pos1");
+			Debug.Log ("Player One is moving to pos1");
 		}
 		if(pActions.player1Grid[player1.playerOneMaxActionPoints] == ActionManager.playerOneGrid.buttonQ) {
 			playerOneSprite.position = pos2.position; //[][X][][][]
-			Debug.Log ("Player One is moving to it's pos2");
+			Debug.Log ("Player One is moving to pos2");
 		}
 		if(pActions.player1Grid[player1.playerOneMaxActionPoints] == ActionManager.playerOneGrid.buttonW) {
 			playerOneSprite.position = pos3.position; //[][][X][][]
-			Debug.Log ("Player One is moving to it's pos3");
+			Debug.Log ("Player One is moving to pos3");
 		}
 		if(pActions.player1Grid[player1.playerOneMaxActionPoints] == ActionManager.playerOneGrid.buttonE) {
 			playerOneSprite.position = pos4.position; //[][][][X][]
@@ -88,6 +101,7 @@ public class ExecutionScript : MonoBehaviour {
 	}
 	void playerOneGrab() {
 		player1.playerOneFoodCount++;
+		Debug.Log ("Player One Grabbed Food");
 	}
 	void playerOneToss() {
 		if(pActions.player1Grid[player1.playerOneMaxActionPoints] == ActionManager.playerOneGrid.buttonTab) {
@@ -124,6 +138,63 @@ public class ExecutionScript : MonoBehaviour {
 			foodMove.transform.Translate (pos10.position);
 			player1.playerOneFoodCount--;
 			Debug.Log ("Player One is throwing at player2 pos10");
+		}
+	}
+	void playerTwoMove() {
+		if(pActions.player2Grid[player2.playerTwoMaxActionPoints] == ActionManager.playerTwoGrid.buttonI) {
+			playerTwoSprite.position = pos6.position;
+			Debug.Log ("Player Two is moving to pos6");
+		}
+		if(pActions.player2Grid[player2.playerTwoMaxActionPoints] == ActionManager.playerTwoGrid.buttonO) {
+			playerTwoSprite.position = pos7.position;
+			Debug.Log ("Player Two is moving to pos7");
+		}
+		if(pActions.player2Grid[player2.playerTwoMaxActionPoints] == ActionManager.playerTwoGrid.buttonP) {
+			playerTwoSprite.position = pos8.position;
+			Debug.Log ("Player Two is moving to pos8");
+		}
+		if(pActions.player2Grid[player2.playerTwoMaxActionPoints] == ActionManager.playerTwoGrid.buttonLS) {
+			playerTwoSprite.position = pos9.position;
+			Debug.Log ("Player Two is moving to pos9");
+		}
+		if(pActions.player2Grid[player2.playerTwoMaxActionPoints] == ActionManager.playerTwoGrid.buttonRS) {
+			playerTwoSprite.position = pos10.position;
+			Debug.Log ("Player Two is moving to pos10");
+		}
+	}
+	void playerTwoGrab() {
+		player2.playerTwoFoodCount++;
+	}
+	void playerTwoToss() {
+		if(pActions.player2Grid[player2.playerTwoMaxActionPoints] == ActionManager.playerTwoGrid.buttonI) {
+			Instantiate(food, playerTwoSprite.position, Quaternion.identity);
+			foodMove.transform.Translate (pos1.position);
+			player2.playerTwoFoodCount--;
+			Debug.Log ("Player two is throwing at player1 pos1");
+		}
+		if(pActions.player2Grid[player2.playerTwoMaxActionPoints] == ActionManager.playerTwoGrid.buttonO) {
+			Instantiate(food, playerTwoSprite.position, Quaternion.identity);
+			foodMove.transform.Translate (pos2.position);
+			player2.playerTwoFoodCount--;
+			Debug.Log ("Player two is throwing at player1 pos2");
+		}
+		if(pActions.player2Grid[player2.playerTwoMaxActionPoints] == ActionManager.playerTwoGrid.buttonP) {
+			Instantiate(food, playerTwoSprite.position, Quaternion.identity);
+			foodMove.transform.Translate (pos3.position);
+			player2.playerTwoFoodCount--;
+			Debug.Log ("Player two is throwing at player1 pos3");
+		}
+		if(pActions.player2Grid[player2.playerTwoMaxActionPoints] == ActionManager.playerTwoGrid.buttonLS) {
+			Instantiate(food, playerTwoSprite.position, Quaternion.identity);
+			foodMove.transform.Translate (pos4.position);
+			player2.playerTwoFoodCount--;
+			Debug.Log ("Player two is throwing at player1 pos4");
+		}
+		if(pActions.player2Grid[player2.playerTwoMaxActionPoints] == ActionManager.playerTwoGrid.buttonRS) {
+			Instantiate(food, playerTwoSprite.position, Quaternion.identity);
+			foodMove.transform.Translate (pos5.position);
+			player2.playerTwoFoodCount--;
+			Debug.Log ("Player two is throwing at player1 pos5");
 		}
 	}
 }
