@@ -178,7 +178,7 @@ public class actionScript : MonoBehaviour {
 			Debug.Log ("p2 toss at position 1");
 		}
 		if((p2throw == true) && (Input.GetKey(KeyCode.O))){
-			pActions.player2Grid[player2.playerTwoActionPoints] = ActionManager.playerTwoGrid.buttonO1;
+			pActions.player2Grid[player2.playerTwoActionPoints] = ActionManager.playerTwoGrid.buttonO;
 			p2throw = false;
 			player2.playerTwoActionPoints ++;
 			Debug.Log ("p2 toss at position 2");
@@ -221,7 +221,7 @@ public class actionScript : MonoBehaviour {
 			Debug.Log ("p2 move to position 6");
 		}
 		if ((p2move == true) && (Input.GetKey (KeyCode.O)) && (p9 == false) && (p10 == false)) { 
-			pActions.player2Grid[player2.playerTwoActionPoints] = ActionManager.playerTwoGrid.buttonO1;
+			pActions.player2Grid[player2.playerTwoActionPoints] = ActionManager.playerTwoGrid.buttonO;
 			player2.playerTwoActionPoints ++;
 			
 			p7 = true;
