@@ -8,9 +8,13 @@ public class actionScript : MonoBehaviour {
 
 	bool p1throw = false;
 	bool p1move = false;
+	bool p1skip = true;
+	bool p1grab = true;
 
 	bool p2throw = false;
 	bool p2move = false;
+	bool p2skip = true;
+	bool p2grab = true;
 	//player1 movement positions
 	bool p1 = false;
 	bool p2 = false;
@@ -72,8 +76,8 @@ public class actionScript : MonoBehaviour {
 		}
 		if((p1throw == true) && (Input.GetKey(KeyCode.R))){
 			pActions.player1Grid[player1.playerOneActionPoints] = ActionManager.playerOneGrid.buttonR;
-			p1throw = false;
 			player1.playerOneActionPoints ++;
+			p1throw = false;
 			Debug.Log ("p1 toss at position 10");
 		}
 		// ACTION SELCETION (move)
@@ -145,21 +149,30 @@ public class actionScript : MonoBehaviour {
 		}
 
 		// ACTION SELECTION (skip)
-		if (Input.GetKey (KeyCode.LeftShift)) {
+		if ((p1skip == true) && (Input.GetKey (KeyCode.LeftShift))) {
 			pActions.playerOneActions[player1.playerOneActionPoints] = ActionManager.playerActions.skip;
 			player1.playerOneActionPoints ++;
-			Debug.Log ("player 1 chose to skip");
+			p1skip = false;
+			Debug.Log ("Player 1 skips!");
+		}
+		if ((p1skip == false) && (Input.GetKeyUp (KeyCode.LeftShift))) {
+			p1skip = true;
 		}
 
+
 		// ACTION SELECTION (grab)
-		if (Input.GetKey (KeyCode.S)) {
+		if ((p1grab == true) && (Input.GetKey (KeyCode.S))) {
 			if(player1.playerOneFoodCount < player1.playerOneMaxFoodCount){
 				pActions.playerOneActions[player1.playerOneActionPoints] = ActionManager.playerActions.grab;
 				player1.playerOneActionPoints ++;
+				p1grab = false;
 				Debug.Log ("player 1 picked up food");
 			}else{
 				Debug.Log ("Can't pick up more food");
 			}
+		}
+		if ((p1grab == false) && (Input.GetKeyUp (KeyCode.S))) {
+			p1grab = true;
 		}
 
 		//////////////////////////////////PLAYER 2 ACTION AND GRID SELECTIONS///////////////////////////////////
@@ -269,21 +282,29 @@ public class actionScript : MonoBehaviour {
 			Debug.Log ("p2 move to position 10");
 		}
 		// ACTION SELECTION (skip)
-		if (Input.GetKey (KeyCode.RightShift)) {
+		if ((p2skip == true) && (Input.GetKey (KeyCode.RightShift))) {
 			pActions.playerTwoActions[player2.playerTwoActionPoints] = ActionManager.playerActions.skip;
 			player2.playerTwoActionPoints ++;
+			p2skip = false;
 			Debug.Log ("player 2 chose to skip");
+		}
+		if ((p2skip == false) && (Input.GetKeyUp (KeyCode.RightShift))) {
+			p2skip = true;
 		}
 		
 		// ACTION SELECTION (grab)
-		if (Input.GetKey (KeyCode.L)) {
+		if ((p2grab == true) && (Input.GetKey (KeyCode.L))) {
 			if(player2.playerTwoFoodCount < player2.playerTwoMaxFoodCount){
 				pActions.playerTwoActions[player2.playerTwoActionPoints] = ActionManager.playerActions.grab;
 				player2.playerTwoActionPoints ++;
+				p2grab = false;
 				Debug.Log ("player 2 picked up more food");
 			}else{
 				Debug.Log ("Can't pick up more food");
 			}
+		}
+		if ((p2grab == false) && (Input.GetKeyUp (KeyCode.L))) {
+			p2grab = true;
 		}
 	}
 }
