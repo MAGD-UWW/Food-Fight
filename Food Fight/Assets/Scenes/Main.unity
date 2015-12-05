@@ -593,7 +593,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1101457413}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Instantiator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -683,8 +683,6 @@ MonoBehaviour:
   player1: {fileID: 0}
   player2: {fileID: 0}
   pActions: {fileID: 0}
-  timerCount: 60
-  timer: {fileID: 1846508064}
 --- !u!4 &1495281320
 Transform:
   m_ObjectHideFlags: 0
@@ -868,6 +866,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+--- !u!1 &1838478113
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1838478115}
+  - 114: {fileID: 1838478114}
+  m_Layer: 0
+  m_Name: UIScript
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1838478114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1838478113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8905e45cdb4a0de4d91c03ca4a152dba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerCount: 60
+  timer: {fileID: 1846508064}
+  choiceUI: {fileID: 0}
+  player1: {fileID: 339222776}
+  player2: {fileID: 339222775}
+--- !u!4 &1838478115
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1838478113}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 20
 --- !u!1 &1846508063
 GameObject:
   m_ObjectHideFlags: 0
@@ -916,9 +958,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '
-
-'
+  m_Text: 
 --- !u!222 &1846508065
 CanvasRenderer:
   m_ObjectHideFlags: 0

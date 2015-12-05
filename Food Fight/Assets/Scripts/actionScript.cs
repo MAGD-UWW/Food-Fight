@@ -38,7 +38,16 @@ public class actionScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Actions ();
+		if(player1.playerOneActionPoints < player1.playerOneMaxActionPoints) {
+			Actions ();
+		} else {
+			//Debug.Log ("Max Points Chosen for Player1");
+		}
+		if(player2.playerTwoActionPoints < player2.playerTwoMaxActionPoints) {
+			Actions();
+		} else {
+			//Debug.Log ("Max Points Chosen for Player2");
+		}
 	}
 
 	void Actions(){
@@ -53,30 +62,30 @@ public class actionScript : MonoBehaviour {
 		if((p1throw == true) && (Input.GetKey(KeyCode.Tab))){
 			pActions.player1Grid[player1.playerOneActionPoints] = ActionManager.playerOneGrid.buttonTab;
 			p1throw = false;
-			player1.playerOneActionPoints ++;
+			player1.playerOneActionPoints++;
 			Debug.Log ("ACTION: PLAYER1 TOSS POS 6");
 		}
 		if((p1throw == true) && (Input.GetKey(KeyCode.Q))){
 			pActions.player1Grid[player1.playerOneActionPoints] = ActionManager.playerOneGrid.buttonQ;
 			p1throw = false;
-			player1.playerOneActionPoints ++;
+			player1.playerOneActionPoints++;
 			Debug.Log ("ACTION: PLAYER1 TOSS POS 7");
 		}
 		if((p1throw == true) && (Input.GetKey(KeyCode.W))){
 			pActions.player1Grid[player1.playerOneActionPoints] = ActionManager.playerOneGrid.buttonW;
 			p1throw = false;
-			player1.playerOneActionPoints ++;
+			player1.playerOneActionPoints++;
 			Debug.Log ("ACTION: PLAYER1 TOSS POS 8");
 		}
 		if((p1throw == true) && (Input.GetKey(KeyCode.E))){
 			pActions.player1Grid[player1.playerOneActionPoints] = ActionManager.playerOneGrid.buttonE;
 			p1throw = false;
-			player1.playerOneActionPoints ++;
+			player1.playerOneActionPoints++;
 			Debug.Log ("ACTION: PLAYER1 TOSS POS 9");
 		}
 		if((p1throw == true) && (Input.GetKey(KeyCode.R))){
 			pActions.player1Grid[player1.playerOneActionPoints] = ActionManager.playerOneGrid.buttonR;
-			player1.playerOneActionPoints ++;
+			player1.playerOneActionPoints++;
 			p1throw = false;
 			Debug.Log ("ACTION: PLAYER1 TOSS POS 10");
 		}
@@ -89,8 +98,7 @@ public class actionScript : MonoBehaviour {
 		// GRID SELECTION SPOT
 		if ((p1move == true) && (Input.GetKey (KeyCode.Tab)) && (p3 == false) && (p4 == false) && (p5 == false)) {
 			pActions.player1Grid[player1.playerOneActionPoints] = ActionManager.playerOneGrid.buttonTab;
-			player1.playerOneActionPoints ++;
-
+			player1.playerOneActionPoints++;
 			p1 = true;
 			p2 = false;
 			p3 = false;
@@ -101,8 +109,7 @@ public class actionScript : MonoBehaviour {
 		}
 		if ((p1move == true) && (Input.GetKey (KeyCode.Q)) && (p4 == false) && (p5 == false)) { 
 			pActions.player1Grid[player1.playerOneActionPoints] = ActionManager.playerOneGrid.buttonQ;
-			player1.playerOneActionPoints ++;
-
+			player1.playerOneActionPoints++;
 			p2 = true;
 			p1 = false;
 			p3 = false;
@@ -113,38 +120,36 @@ public class actionScript : MonoBehaviour {
 		}
 		if ((p1move == true)&&(Input.GetKey (KeyCode.W)) && (p1 == false) && (p5 == false)){ 
 			pActions.player1Grid[player1.playerOneActionPoints] = ActionManager.playerOneGrid.buttonW;
-			player1.playerOneActionPoints ++;
+			player1.playerOneActionPoints++;
 			p3 = true;
 			p1 = false;
 			p2 = false;
 			p4 = false;
 			p5 = false;
 			p1move = false;
-				Debug.Log ("ACTION: PLAYER1 MOVE POS3");
+			Debug.Log ("ACTION: PLAYER1 MOVE POS3");
 		}
 		if ((p1move == true) &&(Input.GetKey (KeyCode.E)) && (p1 == false) && (p2 == false)){ 
 			pActions.player1Grid[player1.playerOneActionPoints] = ActionManager.playerOneGrid.buttonE;
-			player1.playerOneActionPoints ++;
-
+			player1.playerOneActionPoints++;
 			p4 = true;
 			p1 = false;
 			p2 = false;
 			p3 = false;
 			p5 = false;
 			p1move = false;
-				Debug.Log ("ACTION: PLAYER1 MOVE POS4");
+			Debug.Log ("ACTION: PLAYER1 MOVE POS4");
 		}
 		if ((p1move == true) &&(Input.GetKey (KeyCode.R)) && (p1 == false) && (p2 == false) && (p3 == false)){ 
 			pActions.player1Grid[player1.playerOneActionPoints] = ActionManager.playerOneGrid.buttonR;
-			player1.playerOneActionPoints ++;
-
+			player1.playerOneActionPoints++;
 			p5 = true;
 			p1 = false;
 			p2 = false;
 			p3 = false;
 			p4 = false;
 			p1move = false;
-				Debug.Log ("ACTION: PLAYER1 MOVE POS5");
+			Debug.Log ("ACTION: PLAYER1 MOVE POS5");
 		}
 
 		// ACTION SELECTION (skip)
@@ -235,7 +240,6 @@ public class actionScript : MonoBehaviour {
 		if ((p2move == true) && (Input.GetKey (KeyCode.O)) && (p9 == false) && (p10 == false)) { 
 			pActions.player2Grid[player2.playerTwoActionPoints] = ActionManager.playerTwoGrid.buttonO;
 			player2.playerTwoActionPoints ++;
-			
 			p7 = true;
 			p6 = false;
 			p8 = false;
@@ -287,6 +291,7 @@ public class actionScript : MonoBehaviour {
 			p2skip = false;
 			Debug.Log ("ACTION: PLAYER2 SKIP");
 		}
+
 		if ((p2skip == false) && (Input.GetKeyUp (KeyCode.RightShift))) {
 			p2skip = true;
 		}
