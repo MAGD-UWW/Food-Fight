@@ -21,7 +21,6 @@ public class ExecutionScript : MonoBehaviour {
 	public ActionManager pActions;
 	public UIScript uiScript;
 
-
 	void Start() {
 		player1 = GameObject.Find ("Manager").GetComponent<PlayerOneManager>();
 		player2 = GameObject.Find ("Manager").GetComponent<PlayerTwoManager>();
@@ -133,14 +132,13 @@ public class ExecutionScript : MonoBehaviour {
 				//If the index for playerOnes action points was assigned to GRAB
 				if(pActions.playerOneActions[i] == ActionManager.playerActions.grab) {
 					player1.playerOneFoodCount++;
-					i++;
 					player1.playerOneActionPoints--;
+					i++;
 					Debug.Log ("Player One Grabbed Food");
 				}
 				//If the index for playerOnes action points was assigned to SKIP
 				else if(pActions.playerOneActions[i] == ActionManager.playerActions.skip) {
 					player1.playerOneActionPoints--;
-					i++;
 					Debug.Log ("Player One Decided to skip!");
 				}
 			}

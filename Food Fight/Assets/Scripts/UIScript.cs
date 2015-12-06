@@ -71,7 +71,7 @@ public class UIScript : MonoBehaviour {
 	}
 	void Clock() {
 		timerCount-=Time.deltaTime;
-		timer.text = timerCount.ToString ();
+		timer.text = timerCount.ToString ("f1");
 	}
 	void player1Dots() {
 		if(player1.playerOneActionPoints == 0) {
