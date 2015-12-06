@@ -48,7 +48,7 @@ public class ExecutionScript : MonoBehaviour {
 
 	void Update() {
 		if(player1.playerOneActionPoints == 3 && player2.playerTwoActionPoints == 3 && uiScript.timerCount <= 0) {
-			for(int i=0; i<player1.playerOneMaxActionPoints;) {
+			for(int i =0; i<player1.playerOneMaxActionPoints;) {
 				//If the index for playerOnes action points was assigned to MOVE
 				if(pActions.playerOneActions[i] == ActionManager.playerActions.move) {
 					if(pActions.player1Grid[i] == ActionManager.playerOneGrid.buttonTab) {
