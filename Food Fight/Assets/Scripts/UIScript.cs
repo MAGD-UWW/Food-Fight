@@ -6,13 +6,28 @@ public class UIScript : MonoBehaviour {
 	public float timerCount = 60;
 	public Text timer;
 	public GameObject choiceUI;
+	public GameObject executionUI;
 	public PlayerOneManager player1;
 	public PlayerTwoManager player2;
+	public GameObject p1Choice1;
+	public GameObject p1Choice2;
+	public GameObject p1Choice3;
+	public GameObject p1Choice1F;
+	public GameObject p1Choice2F;
+	public GameObject p1Choice3F;
+
 
 	void Start () {
-		choiceUI = GameObject.Find ("Canvas");
+		choiceUI = GameObject.Find ("ChoiceUI");
+		executionUI = GameObject.Find ("ExecutionUI");
 		player1 = GameObject.Find ("Manager").GetComponent<PlayerOneManager>();
 		player2 = GameObject.Find ("Manager").GetComponent<PlayerTwoManager>();
+		p1Choice1 = GameObject.Find ("p1Choice1");
+		p1Choice2 = GameObject.Find ("p1Choice2");
+		p1Choice3 = GameObject.Find ("p1Choice3");
+		p1Choice1F = GameObject.Find ("p1Choice1F");
+		p1Choice2F = GameObject.Find ("p1Choice2F");
+		p1Choice3F = GameObject.Find ("p1Choice3F");
 	}
 	
 	// Update is called once per frame
@@ -27,18 +42,58 @@ public class UIScript : MonoBehaviour {
 	 *                                   *
      *************************************/
 	void Update () {
-		if(player1.playerOneActionPoints < 3 && player2.playerTwoActionPoints < 3) {
+		Clock ();
+		if(player1.playerOneActionPoints == 3 && player2.playerTwoActionPoints == 3 && timerCount > 10) {
+			timerCount = 10;
 			choiceUI.SetActive (true);
-			Clock ();
 		}
-		else {
-			//choiceUI.SetActive (false);
-			Debug.Log ("Turning Off UI");
-			timerCount = 0;
+		if(timerCount <= 0) {
+			choiceUI.SetActive (false);
 		}
+		if(player1.playerOneActionPoints == 0 && player2.playerTwoActionPoints == 0 && timerCount <=-10) {
+			timerCount = 60;
+			choiceUI.SetActive(true);
+		}
+		player1Dots ();
 	}
 	void Clock() {
 		timerCount-=Time.deltaTime;
 		timer.text = timerCount.ToString ();
+	}
+	void player1Dots() {
+		if(player1.playerOneActionPoints == 0) {
+			p1Choice1.SetActive (true);
+			p1Choice2.SetActive (true);
+			p1Choice3.SetActive (true);
+			p1Choice1F.SetActive(false);
+			p1Choice2F.SetActive (false);
+			p1Choice3F.SetActive (false);
+		}
+		if(player1.playerOneActionPoints == 1) {
+			p1Choice1.SetActive (true);
+			p1Choice2.SetActive (true);
+			p1Choice3.SetActive (true);
+			p1Choice1F.SetActive (true);
+		}
+		if(player1.playerOneActionPoints == 2) {
+			p1Choice1.SetActive (true);
+			p1Choice2.SetActive (true);
+			p1Choice3.SetActive (true);
+			p1Choice2F.SetActive(true);
+		}
+		if(player1.playerOneActionPoints == 3) {
+			p1Choice1.SetActive (true);
+			p1Choice2.SetActive (true);
+			p1Choice3.SetActive (true);
+			p1Choice3F.SetActive (true);
+		}
+		if(timerCount <= 0) {
+			p1Choice1.SetActive (false);
+			p1Choice2.SetActive (false);
+			p1Choice3.SetActive (false);
+			p1Choice1F.SetActive (false);
+			p1Choice2F.SetActive (false);
+			p1Choice3F.SetActive (false);
+		}
 	}
 }

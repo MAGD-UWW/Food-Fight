@@ -19,6 +19,8 @@ public class ExecutionScript : MonoBehaviour {
 	public PlayerOneManager player1;
 	public PlayerTwoManager player2;
 	public ActionManager pActions;
+	public UIScript uiScript;
+
 
 	void Start() {
 		player1 = GameObject.Find ("Manager").GetComponent<PlayerOneManager>();
@@ -39,12 +41,13 @@ public class ExecutionScript : MonoBehaviour {
 		pos8 = GameObject.FindGameObjectWithTag ("position8").transform;
 		pos9 = GameObject.FindGameObjectWithTag ("position9").transform;
 		pos10 = GameObject.FindGameObjectWithTag ("position10").transform;
+		uiScript = GameObject.Find ("UIScript").GetComponent<UIScript>();
 		Debug.Log ("Player1 Action Points: " + player1.playerOneActionPoints);
 		Debug.Log ("Player2 Action Points: " + player2.playerTwoActionPoints);
 	}
 
 	void Update() {
-		if(player1.playerOneActionPoints == 3 && player2.playerTwoActionPoints == 3) {
+		if(player1.playerOneActionPoints == 3 && player2.playerTwoActionPoints == 3 && uiScript.timerCount <= 0) {
 			for(int i=0; i<player1.playerOneMaxActionPoints;) {
 				//If the index for playerOnes action points was assigned to MOVE
 				if(pActions.playerOneActions[i] == ActionManager.playerActions.move) {
