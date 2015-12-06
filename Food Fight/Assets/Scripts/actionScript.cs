@@ -28,6 +28,7 @@ public class actionScript : MonoBehaviour {
 	bool p8 = false;
 	bool p9 = false;
 	bool p10 = false;
+	
 
 	// Use this for initialization
 	void Start () {
@@ -61,26 +62,26 @@ public class actionScript : MonoBehaviour {
 		//GRID SELECTION SPOT
 		if((p1throw == true) && (Input.GetKey(KeyCode.Tab))){
 			pActions.player1Grid[player1.playerOneActionPoints] = ActionManager.playerOneGrid.buttonTab;
-			p1throw = false;
 			player1.playerOneActionPoints++;
+			p1throw = false;
 			Debug.Log ("ACTION: PLAYER1 TOSS POS 6");
 		}
 		if((p1throw == true) && (Input.GetKey(KeyCode.Q))){
 			pActions.player1Grid[player1.playerOneActionPoints] = ActionManager.playerOneGrid.buttonQ;
-			p1throw = false;
 			player1.playerOneActionPoints++;
+			p1throw = false;
 			Debug.Log ("ACTION: PLAYER1 TOSS POS 7");
 		}
 		if((p1throw == true) && (Input.GetKey(KeyCode.W))){
 			pActions.player1Grid[player1.playerOneActionPoints] = ActionManager.playerOneGrid.buttonW;
-			p1throw = false;
 			player1.playerOneActionPoints++;
+			p1throw = false;
 			Debug.Log ("ACTION: PLAYER1 TOSS POS 8");
 		}
 		if((p1throw == true) && (Input.GetKey(KeyCode.E))){
 			pActions.player1Grid[player1.playerOneActionPoints] = ActionManager.playerOneGrid.buttonE;
-			p1throw = false;
 			player1.playerOneActionPoints++;
+			p1throw = false;
 			Debug.Log ("ACTION: PLAYER1 TOSS POS 9");
 		}
 		if((p1throw == true) && (Input.GetKey(KeyCode.R))){
@@ -168,11 +169,12 @@ public class actionScript : MonoBehaviour {
 		if ((p1grab == true) && (Input.GetKey (KeyCode.S))) {
 			if(player1.playerOneFoodCount < player1.playerOneMaxFoodCount){
 				pActions.playerOneActions[player1.playerOneActionPoints] = ActionManager.playerActions.grab;
-				player1.playerOneActionPoints ++;
+				player1.playerOneActionPoints++;
 				p1grab = false;
 				Debug.Log ("ACTION: PLAYER1 GRAB");
-			}else{
-				Debug.Log ("ACTION: PLAYER1 TOO MUCH FOOD");
+			}
+			else {
+				Debug.Log ("Player1 Too much Food");
 			}
 		}
 		if ((p1grab == false) && (Input.GetKeyUp (KeyCode.S))) {
@@ -190,32 +192,32 @@ public class actionScript : MonoBehaviour {
 		//GRID SELECTION SPOT
 		if((p2throw == true) && (Input.GetKey(KeyCode.I))){
 			pActions.player2Grid[player2.playerTwoActionPoints] = ActionManager.playerTwoGrid.buttonI;
-			p2throw = false;
 			player2.playerTwoActionPoints ++;
-				Debug.Log ("ACTION: PLAYER2 TOSS POS1");
+			p2throw = false;
+			Debug.Log ("ACTION: PLAYER2 TOSS POS1");
 		}
 		if((p2throw == true) && (Input.GetKey(KeyCode.O))){
 			pActions.player2Grid[player2.playerTwoActionPoints] = ActionManager.playerTwoGrid.buttonO;
-			p2throw = false;
 			player2.playerTwoActionPoints ++;
-				Debug.Log ("ACTION: PLAYER2 TOSS POS2");
+			p2throw = false;
+			Debug.Log ("ACTION: PLAYER2 TOSS POS2");
 		}
 		if((p2throw == true) && (Input.GetKey(KeyCode.P))){
 			pActions.player2Grid[player2.playerTwoActionPoints] = ActionManager.playerTwoGrid.buttonP;
-			p2throw = false;
 			player2.playerTwoActionPoints ++;
-				Debug.Log ("ACTION: PLAYER2 TOSS POS3");
+			p2throw = false;
+			Debug.Log ("ACTION: PLAYER2 TOSS POS3");
 		}
 		if((p2throw == true) && (Input.GetKey(KeyCode.LeftBracket))){
 			pActions.player2Grid[player2.playerTwoActionPoints] = ActionManager.playerTwoGrid.buttonLS;
-			p2throw = false;
 			player2.playerTwoActionPoints ++;
-				Debug.Log ("ACTION: PLAYER2 TOSS POS4");
+			p2throw = false;
+			Debug.Log ("ACTION: PLAYER2 TOSS POS4");
 		}
 		if((p2throw == true) && (Input.GetKey(KeyCode.RightBracket))){
 			pActions.player2Grid[player2.playerTwoActionPoints] = ActionManager.playerTwoGrid.buttonRS;
-			p2throw = false;
 			player2.playerTwoActionPoints ++;
+			p2throw = false;
 				Debug.Log ("ACTION: PLAYER2 TOSS POS5");
 		}
 		// ACTION SELCETION (move)
@@ -228,7 +230,6 @@ public class actionScript : MonoBehaviour {
 		if ((p2move == true) && (Input.GetKey (KeyCode.I)) && (p8 == false) && (p9 == false) && (p10 == false)) {
 			pActions.player2Grid[player2.playerTwoActionPoints] = ActionManager.playerTwoGrid.buttonI;
 			player2.playerTwoActionPoints ++;
-			
 			p6 = true;
 			p7 = false;
 			p8 = false;
@@ -251,7 +252,6 @@ public class actionScript : MonoBehaviour {
 		if ((p2move == true)&&(Input.GetKey (KeyCode.P)) && (p6 == false) && (p10 == false)){ 
 			pActions.player2Grid[player2.playerTwoActionPoints] = ActionManager.playerTwoGrid.buttonP;
 			player2.playerTwoActionPoints ++;
-			
 			p8 = true;
 			p6 = false;
 			p7 = false;
@@ -263,7 +263,6 @@ public class actionScript : MonoBehaviour {
 		if ((p2move == true) &&(Input.GetKey (KeyCode.LeftBracket)) && (p6 == false) && (p7 == false)){ 
 			pActions.player2Grid[player2.playerTwoActionPoints] = ActionManager.playerTwoGrid.buttonLS;
 			player2.playerTwoActionPoints ++;
-			
 			p9 = true;
 			p6 = false;
 			p7 = false;
@@ -275,7 +274,6 @@ public class actionScript : MonoBehaviour {
 		if ((p2move == true) &&(Input.GetKey (KeyCode.RightBracket)) && (p6 == false) && (p7 == false) && (p8 == false)){ 
 			pActions.player2Grid[player2.playerTwoActionPoints] = ActionManager.playerTwoGrid.buttonRS;
 			player2.playerTwoActionPoints ++;
-			
 			p10 = true;
 			p6 = false;
 			p7 = false;

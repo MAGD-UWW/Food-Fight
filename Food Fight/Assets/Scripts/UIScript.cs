@@ -41,22 +41,11 @@ public class UIScript : MonoBehaviour {
 		p2Choice2F = GameObject.Find ("p2Choice2F");
 		p2Choice3F = GameObject.Find ("p2Choice3F");
 	}
-	
-	// Update is called once per frame
-	/*************************************
-	 * 	 Name: Eric Olson                *
-	 * 	 Script: Working with Timer UI   * 
-	 * 	 Date: 12/5/2015                 * 
-	 * 	 Time: 2:36 A.M ... sooo sleepy  *
-	 *                                   *
-	 * 	 Description: Trying to regulate *
-	 * 	 timer/UI based on actionpoints  *
-	 *                                   *
-     *************************************/
+
 	void Update () {
 		Clock ();
 		if(player1.playerOneActionPoints == 3 && player2.playerTwoActionPoints == 3 && timerCount > 10) {
-			timerCount = 10;
+			timerCount = 3;
 			choiceUI.SetActive (true);
 		}
 		if(timerCount <= 0) {

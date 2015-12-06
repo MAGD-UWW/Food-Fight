@@ -46,7 +46,7 @@ public class ExecutionScript : MonoBehaviour {
 	}
 
 	void Update() {
-		if(player1.playerOneActionPoints == 3 && player2.playerTwoActionPoints == 3 && uiScript.timerCount <= 0) {
+		if(player1.playerOneActionPoints == 3 && player2.playerTwoActionPoints == 3 && uiScript.timerCount <= -0) {
 			for(int i =0; i<player1.playerOneMaxActionPoints;) {
 				//If the index for playerOnes action points was assigned to MOVE
 				if(pActions.playerOneActions[i] == ActionManager.playerActions.move) {
@@ -56,11 +56,17 @@ public class ExecutionScript : MonoBehaviour {
 						i++;
 						Debug.Log ("Player One is moving to pos1");
 					}
+					if(i == 3) {
+						break;
+					}
 					if(pActions.player1Grid[i] == ActionManager.playerOneGrid.buttonQ) {
 						playerOneSprite.position = pos2.position; //[][X][][][]
 						player1.playerOneActionPoints--;
 						i++;
 						Debug.Log ("Player One is moving to pos2");
+					}
+					if(i == 3) {
+						break;
 					}
 					if(pActions.player1Grid[i] == ActionManager.playerOneGrid.buttonW) {
 						playerOneSprite.position = pos3.position; //[][][X][][]
@@ -68,11 +74,17 @@ public class ExecutionScript : MonoBehaviour {
 						i++;
 						Debug.Log ("Player One is moving to pos3");
 					}
+					if(i == 3) {
+						break;
+					}
 					if(pActions.player1Grid[i] == ActionManager.playerOneGrid.buttonE) {
 						playerOneSprite.position = pos4.position; //[][][][X][]
 						player1.playerOneActionPoints--;
 						i++;
 						Debug.Log ("Player One is moving to it's pos4");
+					}
+					if(i == 3) {
+						break;
 					}
 					if(pActions.player1Grid[i] == ActionManager.playerOneGrid.buttonR) {
 						playerOneSprite.position = pos5.position; //[][][][][X]
@@ -80,6 +92,9 @@ public class ExecutionScript : MonoBehaviour {
 						i++;
 						Debug.Log ("Player One is moving to it's pos5");
 					}
+				}
+				if(i == 3) {
+					break;
 				}
 				//If the index for playerOnes action points was assigned to TOSS
 				if(pActions.playerOneActions[i] == ActionManager.playerActions.toss) {
@@ -92,6 +107,9 @@ public class ExecutionScript : MonoBehaviour {
 						i++;
 						Debug.Log ("Player One is throwing at player2 pos6");
 					}
+					if(i == 3) {
+						break;
+					}
 					if(pActions.player1Grid[i] == ActionManager.playerOneGrid.buttonQ) {
 						//Instantiate Food from Player1 to pos6.position
 						Instantiate(food, playerOneSprite.position, Quaternion.identity);
@@ -100,6 +118,9 @@ public class ExecutionScript : MonoBehaviour {
 						player1.playerOneActionPoints--;
 						i++;
 						Debug.Log ("Player One is throwing at player2 pos7");
+					}
+					if(i == 3) {
+						break;
 					}
 					if(pActions.player1Grid[i] == ActionManager.playerOneGrid.buttonW) {
 						//Instantiate Food from Player1 to pos6.position
@@ -110,6 +131,9 @@ public class ExecutionScript : MonoBehaviour {
 						i++;
 						Debug.Log ("Player One is throwing at player2 pos8");
 					}
+					if(i == 3) {
+						break;
+					}
 					if(pActions.player1Grid[i] == ActionManager.playerOneGrid.buttonE) {
 						//Instantiate Food from Player1 to pos6.position
 						Instantiate(food, playerOneSprite.position, Quaternion.identity);
@@ -118,6 +142,9 @@ public class ExecutionScript : MonoBehaviour {
 						player1.playerOneActionPoints--;
 						i++;
 						Debug.Log ("Player One is throwing at player2 pos9");
+					}
+					if(i == 3) {
+						break;
 					}
 					if(pActions.player1Grid[i] == ActionManager.playerOneGrid.buttonR) {
 						//Instantiate Food from Player1 to pos6.position
@@ -128,6 +155,9 @@ public class ExecutionScript : MonoBehaviour {
 						i++;
 						Debug.Log ("Player One is throwing at player2 pos10");
 					}
+					if(i == 3) {
+						break;
+					}
 				}
 				//If the index for playerOnes action points was assigned to GRAB
 				if(pActions.playerOneActions[i] == ActionManager.playerActions.grab) {
@@ -136,9 +166,13 @@ public class ExecutionScript : MonoBehaviour {
 					i++;
 					Debug.Log ("Player One Grabbed Food");
 				}
+				if(i == 3) {
+					break;
+				}
 				//If the index for playerOnes action points was assigned to SKIP
-				else if(pActions.playerOneActions[i] == ActionManager.playerActions.skip) {
+				if(pActions.playerOneActions[i] == ActionManager.playerActions.skip) {
 					player1.playerOneActionPoints--;
+					i++;
 					Debug.Log ("Player One Decided to skip!");
 				}
 			}
@@ -150,11 +184,17 @@ public class ExecutionScript : MonoBehaviour {
 					j++;
 					Debug.Log ("Player Two is moving to pos6");
 				}
+				if(j == 3) {
+					break;
+				}
 				if(pActions.player2Grid[j] == ActionManager.playerTwoGrid.buttonO) {
 					playerTwoSprite.position = pos7.position;
 					player2.playerTwoActionPoints--;
 					j++;
 					Debug.Log ("Player Two is moving to pos7");
+				}
+				if(j == 3) {
+					break;
 				}
 				if(pActions.player2Grid[j] == ActionManager.playerTwoGrid.buttonP) {
 					playerTwoSprite.position = pos8.position;
@@ -162,11 +202,17 @@ public class ExecutionScript : MonoBehaviour {
 					j++;
 					Debug.Log ("Player Two is moving to pos8");
 				}
+				if(j == 3) {
+					break;
+				}
 				if(pActions.player2Grid[j] == ActionManager.playerTwoGrid.buttonLS) {
 					playerTwoSprite.position = pos9.position;
 					player2.playerTwoActionPoints--;
 					j++;
 					Debug.Log ("Player Two is moving to pos9");
+				}
+				if(j == 3) {
+					break;
 				}
 				if(pActions.player2Grid[j] == ActionManager.playerTwoGrid.buttonRS) {
 					playerTwoSprite.position = pos10.position;
@@ -174,6 +220,9 @@ public class ExecutionScript : MonoBehaviour {
 					j++;
 					Debug.Log ("Player Two is moving to pos10");
 				}
+			}
+			if(j == 3) {
+				break;
 			}
 			if(pActions.playerTwoActions[j] == ActionManager.playerActions.toss) {
 				if(pActions.player2Grid[j] == ActionManager.playerTwoGrid.buttonI) {
@@ -184,6 +233,9 @@ public class ExecutionScript : MonoBehaviour {
 					j++;
 					Debug.Log ("Player two is throwing at player1 pos1");
 				}
+				if(j == 3) {
+					break;
+				}
 				if(pActions.player2Grid[j] == ActionManager.playerTwoGrid.buttonO) {
 					Instantiate(food, playerTwoSprite.position, Quaternion.identity);
 					foodMove.transform.Translate (pos2.position);
@@ -191,6 +243,9 @@ public class ExecutionScript : MonoBehaviour {
 					player2.playerTwoActionPoints--;
 					j++;
 					Debug.Log ("Player two is throwing at player1 pos2");
+				}
+				if(j == 3) {
+					break;
 				}
 				if(pActions.player2Grid[j] == ActionManager.playerTwoGrid.buttonP) {
 					Instantiate(food, playerTwoSprite.position, Quaternion.identity);
@@ -200,6 +255,9 @@ public class ExecutionScript : MonoBehaviour {
 					j++;
 					Debug.Log ("Player two is throwing at player1 pos3");
 				}
+				if(j == 3) {
+					break;
+				}
 				if(pActions.player2Grid[j] == ActionManager.playerTwoGrid.buttonLS) {
 					Instantiate(food, playerTwoSprite.position, Quaternion.identity);
 					foodMove.transform.Translate (pos4.position);
@@ -207,6 +265,9 @@ public class ExecutionScript : MonoBehaviour {
 					player2.playerTwoActionPoints--;
 					j++;
 					Debug.Log ("Player two is throwing at player1 pos4");
+				}
+				if(j == 3) {
+					break;
 				}
 				if(pActions.player2Grid[j] == ActionManager.playerTwoGrid.buttonRS) {
 					Instantiate(food, playerTwoSprite.position, Quaternion.identity);
@@ -223,7 +284,10 @@ public class ExecutionScript : MonoBehaviour {
 				j++;
 				Debug.Log ("Player Two Grabbed Food");
 			}
-			else if(pActions.playerTwoActions[j] == ActionManager.playerActions.skip) {
+			if(j == 3) {
+				break;
+			}
+			if(pActions.playerTwoActions[j] == ActionManager.playerActions.skip) {
 				player2.playerTwoActionPoints--;
 				j++;
 				Debug.Log ("Player Two Decided to skip!");
