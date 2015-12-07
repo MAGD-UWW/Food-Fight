@@ -10,6 +10,8 @@ public class SecretScript : MonoBehaviour {
 	public AudioClip foodClip;
 	public AudioSource bouldarSound;
 	public AudioClip bouldClip;
+	public RigidBody2D bouldarBody;
+	public bool bouldarPower;
 
 	void Start() {
 		player1 = GameObject.Find ("Manager").GetComponent<PlayerOneManager>();
@@ -22,6 +24,7 @@ public class SecretScript : MonoBehaviour {
 			bouldarSound.play();
 			bouldarMode.SetActive(true);
 			Instantiate(bouldar, player1.playerOneSprite.position, Quaternion.Identity);
+			bouldarPower = true;
 			player1.playerOneHealth -= 75;
 		}
 		if(Input.GetKeyDown (KeyCode.PageDown)) {
@@ -29,7 +32,14 @@ public class SecretScript : MonoBehaviour {
 			bouldarSound.play();
 			bouldarMode.SetActive(true);
 			Instantiate(bouldar, player2.playerTwoSprite.position, Quaternion.Identity);
+			bouldarPower = true;
 			player2.playerTwoHealth -= 75;
+		}
+		if(bouldarPower == true) {
+			Vector3 newPos = (player1.playerOneSprite.position - player2.playerTwoSprite.position);
+			bouldarBody.velocity = newPos * 5;
+			//Add Destroy Object Code
+			
 		}
 	}
 }
