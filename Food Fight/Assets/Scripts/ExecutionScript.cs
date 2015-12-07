@@ -15,17 +15,29 @@ public class ExecutionScript : MonoBehaviour {
 	public Transform pos9;
 	public Transform pos10;
 	public GameObject food;
-	public Transform foodMove;
+	public GameObject food2;
 	public PlayerOneManager player1;
 	public PlayerTwoManager player2;
 	public ActionManager pActions;
 	public UIScript uiScript;
+	//PLAYER1TOSS BOOLS
+	public bool pos6Toss = false;
+	public bool pos7Toss = false;
+	public bool pos8Toss = false;
+	public bool pos9Toss = false;
+	public bool pos10Toss = false;
+	//PLAYER2TOSS BOOLS
+	public bool pos1Toss = false;
+	public bool pos2Toss = false;
+	public bool pos3Toss = false;
+	public bool pos4Toss = false;
+	public bool pos5Toss = false;
+
 
 	void Start() {
 		player1 = GameObject.Find ("Manager").GetComponent<PlayerOneManager>();
 		player2 = GameObject.Find ("Manager").GetComponent<PlayerTwoManager>();
 		pActions = GameObject.Find ("Manager").GetComponent<ActionManager>();
-		foodMove = GameObject.FindGameObjectWithTag ("food").transform;
 		playerOneSprite = GameObject.FindGameObjectWithTag("player1").transform;
 		playerTwoSprite = GameObject.FindGameObjectWithTag ("player2").transform;
 		//pos1 - pos5 = player one grid left to right
@@ -46,7 +58,7 @@ public class ExecutionScript : MonoBehaviour {
 	}
 
 	void Update() {
-		if(player1.playerOneActionPoints == 3 && player2.playerTwoActionPoints == 3 && uiScript.timerCount <= -0) {
+		if(player1.playerOneActionPoints == 3 && player2.playerTwoActionPoints == 3 && uiScript.timerCount <= 0) {
 			for(int i =0; i<player1.playerOneMaxActionPoints;) {
 				//If the index for playerOnes action points was assigned to MOVE
 				if(pActions.playerOneActions[i] == ActionManager.playerActions.move) {
@@ -100,8 +112,8 @@ public class ExecutionScript : MonoBehaviour {
 				if(pActions.playerOneActions[i] == ActionManager.playerActions.toss) {
 					if(pActions.player1Grid[i] == ActionManager.playerOneGrid.buttonTab) {
 						//Instantiate Food from Player1 to pos6.position
-						Instantiate(food, playerOneSprite.position, Quaternion.identity);
-						foodMove.transform.Translate(pos6.position);
+						Instantiate(food2, playerOneSprite.position, Quaternion.identity);
+						pos6Toss = true;
 						player1.playerOneFoodCount--;
 						player1.playerOneActionPoints--;
 						i++;
@@ -112,8 +124,8 @@ public class ExecutionScript : MonoBehaviour {
 					}
 					if(pActions.player1Grid[i] == ActionManager.playerOneGrid.buttonQ) {
 						//Instantiate Food from Player1 to pos6.position
-						Instantiate(food, playerOneSprite.position, Quaternion.identity);
-						foodMove.transform.Translate (pos7.position);
+						Instantiate(food2, playerOneSprite.position, Quaternion.identity);
+						pos7Toss = true;
 						player1.playerOneFoodCount--;
 						player1.playerOneActionPoints--;
 						i++;
@@ -124,8 +136,8 @@ public class ExecutionScript : MonoBehaviour {
 					}
 					if(pActions.player1Grid[i] == ActionManager.playerOneGrid.buttonW) {
 						//Instantiate Food from Player1 to pos6.position
-						Instantiate(food, playerOneSprite.position, Quaternion.identity);
-						foodMove.transform.Translate (pos8.position);
+						Instantiate(food2, playerOneSprite.position, Quaternion.identity);
+						pos8Toss = true;
 						player1.playerOneFoodCount--;
 						player1.playerOneActionPoints--;
 						i++;
@@ -136,8 +148,8 @@ public class ExecutionScript : MonoBehaviour {
 					}
 					if(pActions.player1Grid[i] == ActionManager.playerOneGrid.buttonE) {
 						//Instantiate Food from Player1 to pos6.position
-						Instantiate(food, playerOneSprite.position, Quaternion.identity);
-						foodMove.transform.Translate (pos9.position);
+						Instantiate(food2, playerOneSprite.position, Quaternion.identity);
+						pos9Toss = true;
 						player1.playerOneFoodCount--;
 						player1.playerOneActionPoints--;
 						i++;
@@ -148,16 +160,16 @@ public class ExecutionScript : MonoBehaviour {
 					}
 					if(pActions.player1Grid[i] == ActionManager.playerOneGrid.buttonR) {
 						//Instantiate Food from Player1 to pos6.position
-						Instantiate(food, playerOneSprite.position, Quaternion.identity);
-						foodMove.transform.Translate (pos10.position);
+						Instantiate(food2, playerOneSprite.position, Quaternion.identity);
+						pos10Toss = true;
 						player1.playerOneFoodCount--;
 						player1.playerOneActionPoints--;
 						i++;
 						Debug.Log ("Player One is throwing at player2 pos10");
 					}
-					if(i == 3) {
-						break;
-					}
+				}
+				if(i == 3) {
+					break;
 				}
 				//If the index for playerOnes action points was assigned to GRAB
 				if(pActions.playerOneActions[i] == ActionManager.playerActions.grab) {
@@ -227,7 +239,7 @@ public class ExecutionScript : MonoBehaviour {
 			if(pActions.playerTwoActions[j] == ActionManager.playerActions.toss) {
 				if(pActions.player2Grid[j] == ActionManager.playerTwoGrid.buttonI) {
 					Instantiate(food, playerTwoSprite.position, Quaternion.identity);
-					foodMove.transform.Translate (pos1.position);
+					pos1Toss = true;
 					player2.playerTwoFoodCount--;
 					player2.playerTwoActionPoints--;
 					j++;
@@ -238,7 +250,7 @@ public class ExecutionScript : MonoBehaviour {
 				}
 				if(pActions.player2Grid[j] == ActionManager.playerTwoGrid.buttonO) {
 					Instantiate(food, playerTwoSprite.position, Quaternion.identity);
-					foodMove.transform.Translate (pos2.position);
+					pos2Toss = true;
 					player2.playerTwoFoodCount--;
 					player2.playerTwoActionPoints--;
 					j++;
@@ -249,7 +261,7 @@ public class ExecutionScript : MonoBehaviour {
 				}
 				if(pActions.player2Grid[j] == ActionManager.playerTwoGrid.buttonP) {
 					Instantiate(food, playerTwoSprite.position, Quaternion.identity);
-					foodMove.transform.Translate (pos3.position);
+					pos3Toss = true;
 					player2.playerTwoFoodCount--;
 					player2.playerTwoActionPoints--;
 					j++;
@@ -260,7 +272,7 @@ public class ExecutionScript : MonoBehaviour {
 				}
 				if(pActions.player2Grid[j] == ActionManager.playerTwoGrid.buttonLS) {
 					Instantiate(food, playerTwoSprite.position, Quaternion.identity);
-					foodMove.transform.Translate (pos4.position);
+					pos4Toss = true;
 					player2.playerTwoFoodCount--;
 					player2.playerTwoActionPoints--;
 					j++;
@@ -271,18 +283,21 @@ public class ExecutionScript : MonoBehaviour {
 				}
 				if(pActions.player2Grid[j] == ActionManager.playerTwoGrid.buttonRS) {
 					Instantiate(food, playerTwoSprite.position, Quaternion.identity);
-					foodMove.transform.Translate (pos5.position);
+					pos5Toss = true;
 					player2.playerTwoFoodCount--;
 					player2.playerTwoActionPoints--;
 					j++;
 					Debug.Log ("Player two is throwing at player1 pos5");
 				}
 			}
+			if(j == 3) {
+				break;
+			}
 			if(pActions.playerTwoActions[j] == ActionManager.playerActions.grab) {
 				player2.playerTwoFoodCount++;
 				player2.playerTwoActionPoints--;
 				j++;
-				Debug.Log ("Player Two Grabbed Food");
+					Debug.Log ("Player Two Grabbed Food");
 			}
 			if(j == 3) {
 				break;

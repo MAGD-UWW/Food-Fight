@@ -45,13 +45,13 @@ public class UIScript : MonoBehaviour {
 	void Update () {
 		Clock ();
 		if(player1.playerOneActionPoints == 3 && player2.playerTwoActionPoints == 3 && timerCount > 10) {
-			timerCount = 3;
+			timerCount = 5;
 			choiceUI.SetActive (true);
 		}
 		if(timerCount <= 0) {
 			choiceUI.SetActive (false);
 		}
-		if(player1.playerOneActionPoints == 0 && player2.playerTwoActionPoints == 0 && timerCount <=-10) {
+		if(player1.playerOneActionPoints == 0 && player2.playerTwoActionPoints == 0 && timerCount <=-5) {
 			timerCount = 60;
 			choiceUI.SetActive(true);
 		}

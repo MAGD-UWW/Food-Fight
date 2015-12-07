@@ -28,6 +28,10 @@ public class actionScript : MonoBehaviour {
 	bool p8 = false;
 	bool p9 = false;
 	bool p10 = false;
+
+	//player1 and player2 X
+	public GameObject redXP1;
+	public GameObject redXP2;
 	
 
 	// Use this for initialization
@@ -35,6 +39,10 @@ public class actionScript : MonoBehaviour {
 		player1 = GameObject.Find("Manager").GetComponent<PlayerOneManager>();
 		player2 = GameObject.Find("Manager").GetComponent<PlayerTwoManager>();
 		pActions = GameObject.Find ("Manager").GetComponent<ActionManager> ();
+		redXP1 = GameObject.Find ("redXP1");
+		redXP2 = GameObject.Find ("redXP2");
+		redXP1.SetActive (false);
+		redXP2.SetActive (false);
 	}
 	
 	// Update is called once per frame
@@ -54,10 +62,16 @@ public class actionScript : MonoBehaviour {
 	void Actions(){
 		//////////////////////PLAYER 1 ACTION AND GRID SELECTIONS////////////////////////////////
 		//ACTION SELECTION (toss)
-		if(Input.GetKey(KeyCode.D)){
+		if(Input.GetKey(KeyCode.D) && player1.playerOneFoodCount > 0){
 			pActions.playerOneActions[player1.playerOneActionPoints] = ActionManager.playerActions.toss;
 			p1throw = true;
 			Debug.Log ("ACTION: PLAYER1 TOSS");
+		}
+		else if(Input.GetKey(KeyCode.D) && player1.playerOneFoodCount == 0) {
+			redXP1.SetActive (true);
+		}
+		if(Input.GetKeyUp (KeyCode.D)) {
+			redXP1.SetActive (false);
 		}
 		//GRID SELECTION SPOT
 		if((p1throw == true) && (Input.GetKey(KeyCode.Tab))){
@@ -174,19 +188,29 @@ public class actionScript : MonoBehaviour {
 				Debug.Log ("ACTION: PLAYER1 GRAB");
 			}
 			else {
+				redXP1.SetActive (true);
 				Debug.Log ("Player1 Too much Food");
 			}
 		}
 		if ((p1grab == false) && (Input.GetKeyUp (KeyCode.S))) {
 			p1grab = true;
 		}
+		if(Input.GetKeyUp (KeyCode.S)) {
+			redXP1.SetActive(false);
+		}
 
 		//////////////////////////////////PLAYER 2 ACTION AND GRID SELECTIONS///////////////////////////////////
 		//ACTION SELECTION (toss)
-		if(Input.GetKey (KeyCode.Semicolon)){
+		if(Input.GetKey (KeyCode.Semicolon) && player2.playerTwoFoodCount > 0){
 			pActions.playerTwoActions[player2.playerTwoActionPoints] = ActionManager.playerActions.toss;
 			p2throw = true;
 			Debug.Log ("ACTION: PLAYER2 TOSS");
+		}
+		else if(Input.GetKey (KeyCode.Semicolon) && player2.playerTwoFoodCount == 0) {
+			redXP2.SetActive(true);
+		}
+		if(Input.GetKeyUp (KeyCode.Semicolon)) {
+			redXP2.SetActive (false);
 		}
 
 		//GRID SELECTION SPOT
@@ -303,11 +327,15 @@ public class actionScript : MonoBehaviour {
 				Debug.Log ("ACTION: PLAYER2 GRAB");
 			}
 			else{
+				redXP2.SetActive (true);
 				Debug.Log ("ACTION: PLAYER2 TOO MUCH FOOD");
 			}
 		}
 		if ((p2grab == false) && (Input.GetKeyUp (KeyCode.L))) {
 			p2grab = true;
+		}
+		if(Input.GetKeyUp (KeyCode.L)) {
+			redXP2.SetActive (false);
 		}
 	}
 }
