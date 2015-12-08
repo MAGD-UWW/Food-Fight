@@ -3,12 +3,13 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class UIScript : MonoBehaviour {
-	public float timerCount = 60;
+	public float timerCount = 20;
 	public Text timer;
 	public GameObject choiceUI;
 	public GameObject executionUI;
 	public PlayerOneManager player1;
 	public PlayerTwoManager player2;
+	public ActionManager pActions;
 	public GameObject p1Choice1;
 	public GameObject p1Choice2;
 	public GameObject p1Choice3;
@@ -21,6 +22,7 @@ public class UIScript : MonoBehaviour {
 	public GameObject p2Choice1F;
 	public GameObject p2Choice2F;
 	public GameObject p2Choice3F;
+	public bool timeOut;
 	
 
 	void Start () {
@@ -28,6 +30,7 @@ public class UIScript : MonoBehaviour {
 		executionUI = GameObject.Find ("ExecutionUI");
 		player1 = GameObject.Find ("Manager").GetComponent<PlayerOneManager>();
 		player2 = GameObject.Find ("Manager").GetComponent<PlayerTwoManager>();
+		pActions = GameObject.Find ("Manager").GetComponent<ActionManager>();
 		p1Choice1 = GameObject.Find ("p1Choice1");
 		p1Choice2 = GameObject.Find ("p1Choice2");
 		p1Choice3 = GameObject.Find ("p1Choice3");
@@ -44,16 +47,31 @@ public class UIScript : MonoBehaviour {
 
 	void Update () {
 		Clock ();
+		//action points controlling UI 
 		if(player1.playerOneActionPoints == 3 && player2.playerTwoActionPoints == 3 && timerCount > 10) {
 			timerCount = 5;
 			choiceUI.SetActive (true);
 		}
-		if(timerCount <= 0) {
+		if(timeOut == true) {
 			choiceUI.SetActive (false);
+			if(player1.playerOneActionPoints < 3) {
+				player1.playerOneActionPoints = 3;
+			}
+			if(player2.playerTwoActionPoints < 3) {
+				player2.playerTwoActionPoints = 3;
+			}
 		}
-		if(player1.playerOneActionPoints == 0 && player2.playerTwoActionPoints == 0 && timerCount <=-5) {
-			timerCount = 60;
+		if(player1.playerOneActionPoints <= 0 && player2.playerTwoActionPoints <= 0 && timerCount <=-5) {
+			timerCount = 20;
+			player1.playerOneActionPoints = 0;
+			player2.playerTwoActionPoints = 0;
 			choiceUI.SetActive(true);
+			pActions.playerOneActions[0] = ActionManager.playerActions.skip;
+			pActions.playerOneActions[1] = ActionManager.playerActions.skip;
+			pActions.playerOneActions[2] = ActionManager.playerActions.skip;
+			pActions.playerTwoActions[0] = ActionManager.playerActions.skip;
+			pActions.playerTwoActions[1] = ActionManager.playerActions.skip;
+			pActions.playerTwoActions[2] = ActionManager.playerActions.skip;
 		}
 		player1Dots ();
 		player2Dots ();

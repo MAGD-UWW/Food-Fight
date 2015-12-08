@@ -32,6 +32,8 @@ public class actionScript : MonoBehaviour {
 	//player1 and player2 X
 	public GameObject redXP1;
 	public GameObject redXP2;
+
+	public UIScript uiScript;
 	
 
 	// Use this for initialization
@@ -43,6 +45,13 @@ public class actionScript : MonoBehaviour {
 		redXP2 = GameObject.Find ("redXP2");
 		redXP1.SetActive (false);
 		redXP2.SetActive (false);
+		uiScript = GameObject.Find ("UIScript").GetComponent<UIScript>();
+		pActions.playerOneActions[0] = ActionManager.playerActions.skip;
+		pActions.playerOneActions[1] = ActionManager.playerActions.skip;
+		pActions.playerOneActions[2] = ActionManager.playerActions.skip;
+		pActions.playerTwoActions[0] = ActionManager.playerActions.skip;
+		pActions.playerTwoActions[1] = ActionManager.playerActions.skip;
+		pActions.playerTwoActions[2] = ActionManager.playerActions.skip;
 	}
 	
 	// Update is called once per frame
@@ -172,7 +181,7 @@ public class actionScript : MonoBehaviour {
 			pActions.playerOneActions[player1.playerOneActionPoints] = ActionManager.playerActions.skip;
 			player1.playerOneActionPoints ++;
 			p1skip = false;
-				Debug.Log ("ACTION: PLAYER1 SKIP");
+			Debug.Log ("ACTION: PLAYER1 SKIP");
 		}
 		if ((p1skip == false) && (Input.GetKeyUp (KeyCode.LeftShift))) {
 			p1skip = true;
@@ -336,6 +345,14 @@ public class actionScript : MonoBehaviour {
 		}
 		if(Input.GetKeyUp (KeyCode.L)) {
 			redXP2.SetActive (false);
+		}
+	}
+	void setSkip() {
+		if(player1.playerOneActionPoints < 3 && uiScript.timerCount <= 0) {
+			player1.playerOneActionPoints = 3;
+		}
+		if(player2.playerTwoActionPoints < 3 && uiScript.timerCount <= 0) {
+			player2.playerTwoActionPoints = 3;
 		}
 	}
 }
