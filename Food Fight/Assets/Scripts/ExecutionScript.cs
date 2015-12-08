@@ -317,35 +317,19 @@ public class ExecutionScript : MonoBehaviour {
 	  }
 	}
 	void skipCheck() {
-		if(player1.playerOneActionPoints == 0 && uiScript.timerCount <= 0) {
-			pActions.playerOneActions[0] = ActionManager.playerActions.skip;
-			pActions.playerOneActions[1] = ActionManager.playerActions.skip;
-			pActions.playerOneActions[2] = ActionManager.playerActions.skip;
-			player1.playerOneActionPoints += 3;
-		}
-		else if(player1.playerOneActionPoints == 1 && uiScript.timerCount <= 0) {
-			pActions.playerOneActions[1] = ActionManager.playerActions.skip;
-			pActions.playerOneActions[2] = ActionManager.playerActions.skip;
-			player1.playerOneActionPoints += 2;
-		}
-		else if(player1.playerOneActionPoints == 2 && uiScript.timerCount <= 0) {
-			pActions.playerOneActions[2] = ActionManager.playerActions.skip;
-			player1.playerOneActionPoints++;
-		}
-		if(player2.playerTwoActionPoints == 0 && uiScript.timerCount <= 0) {
-			pActions.playerTwoActions[0] = ActionManager.playerActions.skip;
-			pActions.playerTwoActions[1] = ActionManager.playerActions.skip;
-			pActions.playerTwoActions[2] = ActionManager.playerActions.skip;
-			player2.playerTwoActionPoints +=3;
-		}
-		else if(player2.playerTwoActionPoints == 1 && uiScript.timerCount <= 0) {
-			pActions.playerTwoActions[1] = ActionManager.playerActions.skip;
-			pActions.playerTwoActions[2] = ActionManager.playerActions.skip;
-			player2.playerTwoActionPoints +=2;
-		}
-		else if(player2.playerTwoActionPoints == 2 && uiScript.timerCount <= 0) {
-			pActions.playerTwoActions[2] = ActionManager.playerActions.skip;
-			player2.playerTwoActionPoints++;
+		if(uiScript.timerCount <= 0){
+			if(player1.playerOneActionPoints < 3){
+				for(;player1.playerOneActionPoints < 4;){
+					pActions.playerOneActions[player1.playerOneActionPoints] = ActionManager.playerActions.skip;
+					player1.playerOneActionPoints++;
+				}
+			}
+			if(player2.playerTwoActionPoints < 3){
+				for(;player2.playerTwoActionPoints < 4;){
+					pActions.playerTwoActions[player2.playerTwoActionPoints] = ActionManager.playerActions.skip;
+					player2.playerTwoActionPoints++;
+				}
+			}
 		}
 	}
 }
