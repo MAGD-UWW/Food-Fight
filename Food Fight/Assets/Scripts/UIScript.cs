@@ -22,8 +22,7 @@ public class UIScript : MonoBehaviour {
 	public GameObject p2Choice1F;
 	public GameObject p2Choice2F;
 	public GameObject p2Choice3F;
-	public bool timeOut;
-	
+
 
 	void Start () {
 		choiceUI = GameObject.Find ("ChoiceUI");
@@ -52,26 +51,14 @@ public class UIScript : MonoBehaviour {
 			timerCount = 5;
 			choiceUI.SetActive (true);
 		}
-		if(timeOut == true) {
-			choiceUI.SetActive (false);
-			if(player1.playerOneActionPoints < 3) {
-				player1.playerOneActionPoints = 3;
-			}
-			if(player2.playerTwoActionPoints < 3) {
-				player2.playerTwoActionPoints = 3;
-			}
+		if(timerCount <= 0) {
+			choiceUI.SetActive(false);
 		}
-		if(player1.playerOneActionPoints <= 0 && player2.playerTwoActionPoints <= 0 && timerCount <=-5) {
-			timerCount = 20;
+		if(timerCount <=-5) {
 			player1.playerOneActionPoints = 0;
 			player2.playerTwoActionPoints = 0;
+			timerCount = 20;
 			choiceUI.SetActive(true);
-			pActions.playerOneActions[0] = ActionManager.playerActions.skip;
-			pActions.playerOneActions[1] = ActionManager.playerActions.skip;
-			pActions.playerOneActions[2] = ActionManager.playerActions.skip;
-			pActions.playerTwoActions[0] = ActionManager.playerActions.skip;
-			pActions.playerTwoActions[1] = ActionManager.playerActions.skip;
-			pActions.playerTwoActions[2] = ActionManager.playerActions.skip;
 		}
 		player1Dots ();
 		player2Dots ();
