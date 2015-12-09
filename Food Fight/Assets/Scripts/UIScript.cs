@@ -54,7 +54,7 @@ public class UIScript : MonoBehaviour {
 		if(timerCount <= 0) {
 			choiceUI.SetActive(false);
 		}
-		if(timerCount <=-15) {
+		if(timerCount <=-7) {
 			player1.playerOneActionPoints = 0;
 			player2.playerTwoActionPoints = 0;
 			timerCount = 35;

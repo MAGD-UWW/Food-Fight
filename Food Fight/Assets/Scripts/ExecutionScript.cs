@@ -206,15 +206,7 @@ public class ExecutionScript : MonoBehaviour {
 			if(pActions.playerOneActions[i] == ActionManager.playerActions.grab) {
 				player1.playerOneActionPoints--;
 				yield return new WaitForSeconds(turnTime);
-				if(player1.playerOneFoodCount == 1) {
-					spriteRendererP1.sprite = playerOneF1;
-				}
-				else if(player1.playerOneFoodCount == 2) {
-					spriteRendererP1.sprite = playerOneF2;
-				}
-				else {
-					spriteRendererP1.sprite = playerOneIdle;
-				}
+				spriteCheck ();
 				i++;
 				Debug.Log ("Player One Grabbed Food");
 				if(i == 3) {
@@ -352,12 +344,7 @@ public class ExecutionScript : MonoBehaviour {
 			if(pActions.playerTwoActions[j] == ActionManager.playerActions.grab) {
 				player2.playerTwoActionPoints--;
 				yield return new WaitForSeconds(turnTime);
-				if(player2.playerTwoFoodCount == 1) {
-					spriteRendererP2.sprite = playerTwoF1;
-				}
-				else {
-					spriteRendererP2.sprite = playerTwoIdle;
-				}
+				spriteCheck();
 				j++;
 				Debug.Log ("Player Two Grabbed Food");
 				if(j == 3) {
@@ -411,6 +398,23 @@ public class ExecutionScript : MonoBehaviour {
 		else if(player2.playerTwoActionPoints == 2 && uiScript.timerCount >= 0 && uiScript.timerCount <= 0.2) {
 			pActions.playerTwoActions[2] = ActionManager.playerActions.skip;
 			player2.playerTwoActionPoints++;
+		}
+	}
+	void spriteCheck() {
+		if(player1.playerOneFoodCount == 1) {
+			spriteRendererP1.sprite = playerOneF1;
+		}
+		else if(player1.playerOneFoodCount == 2) {
+			spriteRendererP1.sprite = playerOneF2;
+		}
+		else if(player1.playerOneFoodCount == 0){
+			spriteRendererP1.sprite = playerOneIdle;
+		}
+		if(player2.playerTwoFoodCount == 1 || player2.playerTwoFoodCount == 2) {
+			spriteRendererP2.sprite = playerTwoF1;
+		}
+		else if(player2.playerTwoFoodCount == 0) {
+			spriteRendererP2.sprite = playerTwoIdle;
 		}
 	}
 
