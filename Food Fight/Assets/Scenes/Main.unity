@@ -844,7 +844,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 573786351}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1a669f0593455b42bec2ee58cee3f28, type: 3}
+  m_Script: {fileID: 11500000, guid: 0f2ed2c85b25afa4cb2456713d393889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player1: {fileID: 0}
@@ -852,6 +852,7 @@ MonoBehaviour:
   pActions: {fileID: 0}
   redXP1: {fileID: 0}
   redXP2: {fileID: 0}
+  uiScript: {fileID: 0}
 --- !u!4 &573786353
 Transform:
   m_ObjectHideFlags: 0
@@ -2233,6 +2234,7 @@ MonoBehaviour:
   executionUI: {fileID: 0}
   player1: {fileID: 339222776}
   player2: {fileID: 339222775}
+  pActions: {fileID: 0}
   p1Choice1: {fileID: 0}
   p1Choice2: {fileID: 0}
   p1Choice3: {fileID: 0}
