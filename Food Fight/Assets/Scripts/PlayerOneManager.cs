@@ -21,7 +21,7 @@ public class PlayerOneManager : MonoBehaviour, IGameManager {
 		playerOneMaxActionPoints = 3;
 		playerOneFoodCount = 0;
 		playerOneMaxFoodCount = 2;
-		playerOneMaxHealth = 100;
+		playerOneMaxHealth = 3;
 		playerOneHealth = playerOneMaxHealth;
 	}
 	

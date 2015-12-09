@@ -4,7 +4,9 @@ using System.Collections;
 
 public class PlayerTwoHealth : MonoBehaviour {
 	public PlayerTwoManager player2;
-	public Text Health;
+	public GameObject live1;
+	public GameObject live2;
+	public GameObject live3;
 	public Sprite playerTwo;
 	public Sprite playerTwoFood;
 
@@ -14,16 +16,30 @@ public class PlayerTwoHealth : MonoBehaviour {
 	void Start () {
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		player2 = GameObject.Find ("Manager").GetComponent<PlayerTwoManager>();
+		live1 = GameObject.Find ("P2Live1");
+		live2 = GameObject.Find ("P2Live2");
+		live3 = GameObject.Find ("P2Live3");
 	}
 	
 	
 	void Update () {
-		Health.text = player2.playerTwoHealth.ToString();
 		changeSprite ();
+		if(player2.playerTwoHealth == 3) {
+			live1.SetActive(true);
+			live2.SetActive(true);
+			live3.SetActive(true);
+		}
+		else if(player2.playerTwoHealth == 2) {
+			live1.SetActive(false);
+		}
+		else if(player2.playerTwoHealth == 1) {
+			live1.SetActive(false);
+			live2.SetActive(false);
+		}
 	}
 	void OnTriggerEnter2D(Collider2D food) {
 		if(food.gameObject.tag == "food2") {
-			player2.playerTwoHealth -= 25;
+			player2.playerTwoHealth --;
 		}
 	}
 	void changeSprite() {

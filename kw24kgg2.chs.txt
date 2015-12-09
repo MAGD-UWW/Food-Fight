@@ -1,0 +1,49 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	modified:   Food Fight/Assets/Scenes/EndP1Wins.unity
+#	modified:   Food Fight/Assets/Scenes/EndP2Wins.unity
+#	modified:   Food Fight/Assets/Scenes/Main.unity
+#	modified:   Food Fight/Assets/Scenes/Tutorial.unity
+#	modified:   Food Fight/Assets/Scripts/PlayerOneHealth.cs
+#	modified:   Food Fight/Assets/Scripts/PlayerOneManager.cs
+#	modified:   Food Fight/Assets/Scripts/PlayerTwoHealth.cs
+#	modified:   Food Fight/Assets/Scripts/PlayerTwoManager.cs
+#	modified:   Food Fight/Assets/Scripts/ToMainGame.cs
+#	deleted:    Food Fight/Assets/Sprites/Brocolli.png
+#	deleted:    Food Fight/Assets/Sprites/EndScreen1.png
+#	deleted:    Food Fight/Assets/Sprites/EndScreen2.png
+#	new file:   Food Fight/Assets/Sprites/GameInstructions.png
+#	renamed:    Food Fight/Assets/Sprites/Player1_1Food.png.meta -> Food Fight/Assets/Sprites/GameInstructions.png.meta
+#	new file:   Food Fight/Assets/Sprites/P1Wins.png
+#	renamed:    Food Fight/Assets/Sprites/Brocolli.png.meta -> Food Fight/Assets/Sprites/P1Wins.png.meta
+#	new file:   Food Fight/Assets/Sprites/P1_Head1.png
+#	renamed:    Food Fight/Assets/Sprites/EndScreen1.png.meta -> Food Fight/Assets/Sprites/P1_Head1.png.meta
+#	new file:   Food Fight/Assets/Sprites/P2Wins.png
+#	renamed:    Food Fight/Assets/Sprites/EndScreen2.png.meta -> Food Fight/Assets/Sprites/P2Wins.png.meta
+#	new file:   Food Fight/Assets/Sprites/P2_Head1.png
+#	renamed:    Food Fight/Assets/Sprites/foodfight_startButton copy.png.meta -> Food Fight/Assets/Sprites/P2_Head1.png.meta
+#	renamed:    Food Fight/Assets/Sprites/Player1_1Food.png -> Food Fight/Assets/Sprites/Player1Food1.png
+#	renamed:    Food Fight/Assets/Sprites/Player1_2foods.png.meta -> Food Fight/Assets/Sprites/Player1Food1.png.meta
+#	renamed:    Food Fight/Assets/Sprites/Player1_2foods.png -> Food Fight/Assets/Sprites/Player1Food2.png
+#	renamed:    Food Fight/Assets/Sprites/Player2_1.png.meta -> Food Fight/Assets/Sprites/Player1Food2.png.meta
+#	new file:   Food Fight/Assets/Sprites/Player1Idle.png
+#	new file:   Food Fight/Assets/Sprites/Player1Idle.png.meta
+#	deleted:    Food Fight/Assets/Sprites/Player1_1.png
+#	renamed:    Food Fight/Assets/Sprites/Player2_2Foods.png -> Food Fight/Assets/Sprites/Player2Food1.png
+#	renamed:    Food Fight/Assets/Sprites/Player1_1.png.meta -> Food Fight/Assets/Sprites/Player2Food1.png.meta
+#	new file:   Food Fight/Assets/Sprites/Player2Idle.png
+#	new file:   Food Fight/Assets/Sprites/Player2Idle.png.meta
+#	deleted:    Food Fight/Assets/Sprites/Player2_1.png
+#	deleted:    Food Fight/Assets/Sprites/Player2_2Foods.png.meta
+#	modified:   Food Fight/Assets/Sprites/UI.png
+#	modified:   Food Fight/Assets/Sprites/UI.png.meta
+#	deleted:    Food Fight/Assets/Sprites/foodfight_startButton copy.png
+#	deleted:    Food Fight/Assets/Sprites/foodfight_startscene.png
+#	deleted:    Food Fight/Assets/Sprites/foodfight_startscene.png.meta
+#
+
