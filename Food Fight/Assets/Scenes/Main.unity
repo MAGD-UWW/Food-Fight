@@ -1139,6 +1139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 0}
   player2: {fileID: 0}
+  uiScript: {fileID: 0}
 --- !u!1 &754854486
 GameObject:
   m_ObjectHideFlags: 0
@@ -2613,7 +2614,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8905e45cdb4a0de4d91c03ca4a152dba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerCount: 35
+  timerCount: 25
   timer: {fileID: 1846508064}
   choiceUI: {fileID: 0}
   executionUI: {fileID: 0}

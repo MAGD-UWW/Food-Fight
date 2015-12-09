@@ -19,7 +19,7 @@ public class FoodToss1 : MonoBehaviour {
 		if(exeScript.pos6Toss == true) {
 			Vector3 newPos = (exeScript.pos6.position - transform.position);
 			mushBody.velocity = newPos * 5;
-			if(transform.position.x <= -2.5 && transform.position.y <= -3.1) {
+			if(transform.position.x <= -3.8 && transform.position.y <= -3.0) {
 				exeScript.pos6Toss = false;
 				splatSource.Play ();
 				Destroy (this.gameObject);

@@ -14,7 +14,7 @@ public class SceneScript : MonoBehaviour {
 	
 
 	void Update () {
-	 if(uiScript.timerCount <= -6.7 && uiScript.timerCount >= -6.9) { 
+	if(uiScript.timerCount <= -6.7 && uiScript.timerCount >= -6.9) { 
 		if(player1.playerOneHealth <= 0 && player2.playerTwoHealth <= 0) {
 			player1.playerOneHealth = 1;
 			player2.playerTwoHealth = 1;
@@ -25,6 +25,6 @@ public class SceneScript : MonoBehaviour {
 		else if(player2.playerTwoHealth <= 0) {
 			Application.LoadLevel ("EndP1Wins");
 		}
-		}
+	 }
 	}
 }
