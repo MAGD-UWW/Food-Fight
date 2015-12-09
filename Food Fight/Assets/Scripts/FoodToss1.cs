@@ -30,7 +30,7 @@ public class FoodToss1 : MonoBehaviour {
 			if(transform.position.x < -2.6 && transform.position.y < -3.0) {
 				exeScript.pos7Toss = false;
 				splatSource.Play ();
-				Destroy (this.gameObject);
+				//Destroy (this.gameObject);
 			}
 		}
 		if(exeScript.pos8Toss == true) {
@@ -39,7 +39,7 @@ public class FoodToss1 : MonoBehaviour {
 			if(transform.position.x < -1.2 && transform.position.y < -3.3) {
 				exeScript.pos8Toss = false;
 				splatSource.Play ();
-				Destroy (this.gameObject);
+				//Destroy (this.gameObject);
 			}
 		}
 		if(exeScript.pos9Toss == true) {
@@ -48,7 +48,7 @@ public class FoodToss1 : MonoBehaviour {
 			if(transform.position.x > .045 && transform.position.y < -3.5) {
 				exeScript.pos9Toss = false;
 				splatSource.Play ();
-				Destroy (this.gameObject);
+				//Destroy (this.gameObject);
 			}
 		}
 		if(exeScript.pos10Toss == true) {
@@ -57,7 +57,7 @@ public class FoodToss1 : MonoBehaviour {
 			if(transform.position.x > 1.4 && transform.position.y < -3.6) {
 				exeScript.pos10Toss = false;
 				splatSource.Play ();
-				Destroy (this.gameObject);
+				//Destroy (this.gameObject);
 			}
 		}
 	}

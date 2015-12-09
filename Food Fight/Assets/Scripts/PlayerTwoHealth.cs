@@ -7,14 +7,9 @@ public class PlayerTwoHealth : MonoBehaviour {
 	public GameObject live1;
 	public GameObject live2;
 	public GameObject live3;
-	public Sprite playerTwo;
-	public Sprite playerTwoFood;
-
-	private SpriteRenderer spriteRenderer;
 	
 	
 	void Start () {
-		spriteRenderer = GetComponent<SpriteRenderer>();
 		player2 = GameObject.Find ("Manager").GetComponent<PlayerTwoManager>();
 		live1 = GameObject.Find ("P2Live1");
 		live2 = GameObject.Find ("P2Live2");
@@ -23,7 +18,6 @@ public class PlayerTwoHealth : MonoBehaviour {
 	
 	
 	void Update () {
-		changeSprite ();
 		if(player2.playerTwoHealth == 3) {
 			live1.SetActive(true);
 			live2.SetActive(true);
@@ -40,14 +34,6 @@ public class PlayerTwoHealth : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D food) {
 		if(food.gameObject.tag == "food2") {
 			player2.playerTwoHealth --;
-		}
-	}
-	void changeSprite() {
-		if(player2.playerTwoFoodCount >= 1) {
-			spriteRenderer.sprite = playerTwoFood;
-		}
-		else {
-			spriteRenderer.sprite = playerTwo;
 		}
 	}
 }

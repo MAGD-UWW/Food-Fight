@@ -186,6 +186,7 @@ public class actionScript : MonoBehaviour {
 		if ((p1grab == true) && (Input.GetKey (KeyCode.S))) {
 			if(player1.playerOneFoodCount < player1.playerOneMaxFoodCount){
 				pActions.playerOneActions[player1.playerOneActionPoints] = ActionManager.playerActions.grab;
+				player1.playerOneFoodCount++;
 				player1.playerOneActionPoints++;
 				p1grab = false;
 				Debug.Log ("ACTION: PLAYER1 GRAB");
@@ -325,9 +326,11 @@ public class actionScript : MonoBehaviour {
 		if ((p2grab == true) && (Input.GetKey (KeyCode.L))) {
 			if(player2.playerTwoFoodCount < player2.playerTwoMaxFoodCount){
 				pActions.playerTwoActions[player2.playerTwoActionPoints] = ActionManager.playerActions.grab;
-				player2.playerTwoActionPoints ++;
+				player2.playerTwoFoodCount++;
+				player2.playerTwoActionPoints++;
 				p2grab = false;
 				Debug.Log ("ACTION: PLAYER2 GRAB");
+				Debug.Log ("Player2 Food Count: " + player2.playerTwoFoodCount);
 			}
 			else{
 				redXP2.SetActive (true);

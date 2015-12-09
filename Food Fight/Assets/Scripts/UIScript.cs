@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class UIScript : MonoBehaviour {
-	public float timerCount = 20;
+	public float timerCount;
 	public Text timer;
 	public GameObject choiceUI;
 	public GameObject executionUI;
@@ -54,10 +54,10 @@ public class UIScript : MonoBehaviour {
 		if(timerCount <= 0) {
 			choiceUI.SetActive(false);
 		}
-		if(timerCount <=-5) {
+		if(timerCount <=-15) {
 			player1.playerOneActionPoints = 0;
 			player2.playerTwoActionPoints = 0;
-			timerCount = 20;
+			timerCount = 35;
 			choiceUI.SetActive(true);
 		}
 		player1Dots ();
