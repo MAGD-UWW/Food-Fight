@@ -376,7 +376,7 @@ public class ExecutionScript : MonoBehaviour {
 		}
 	}
 	void skipCheck() {
-		if(player1.playerOneActionPoints == 0 && uiScript.timerCount <= 0 && uiScript.timerCount >= -1) {
+		if(player1.playerOneActionPoints == 0 && uiScript.timerCount >= 0 && uiScript.timerCount <= 0.2) {
 			pActions.playerOneActions[0] = ActionManager.playerActions.skip;
 			pActions.playerOneActions[1] = ActionManager.playerActions.skip;
 			pActions.playerOneActions[2] = ActionManager.playerActions.skip;
