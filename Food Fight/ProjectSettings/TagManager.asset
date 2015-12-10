@@ -3,7 +3,21 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - food
+  - player1
+  - player2
+  - position1
+  - position2
+  - position3
+  - position4
+  - position5
+  - position6
+  - position7
+  - position8
+  - position9
+  - position10
+  - food2
   layers:
   - Default
   - TransparentFX

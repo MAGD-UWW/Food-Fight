@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
 
 public class ExecutionScript : MonoBehaviour {
@@ -16,15 +15,41 @@ public class ExecutionScript : MonoBehaviour {
 	public Transform pos9;
 	public Transform pos10;
 	public GameObject food;
-	public Transform foodMove;
+	public GameObject food2;
 	public PlayerOneManager player1;
 	public PlayerTwoManager player2;
 	public ActionManager pActions;
-	public int counter; //Align int counter with UI timer
+	public UIScript uiScript;
+	//PLAYER1TOSS BOOLS
+	public bool pos6Toss = false;
+	public bool pos7Toss = false;
+	public bool pos8Toss = false;
+	public bool pos9Toss = false;
+	public bool pos10Toss = false;
+	//PLAYER2TOSS BOOLS
+	public bool pos1Toss = false;
+	public bool pos2Toss = false;
+	public bool pos3Toss = false;
+	public bool pos4Toss = false;
+	public bool pos5Toss = false;
+
+	public int turnTime = 2;
+
+	public SpriteRenderer spriteRendererP1;
+	public SpriteRenderer spriteRendererP2;
+	public Sprite playerOneIdle;
+	public Sprite playerTwoIdle;
+	public Sprite playerTwoF1;
+	public Sprite playerOneF1;
+	public Sprite playerOneF2;
+
 
 	void Start() {
-		foodMove = GameObject.FindWithTag ("food").transform;
+		player1 = GameObject.Find ("Manager").GetComponent<PlayerOneManager>();
+		player2 = GameObject.Find ("Manager").GetComponent<PlayerTwoManager>();
+		pActions = GameObject.Find ("Manager").GetComponent<ActionManager>();
 		playerOneSprite = GameObject.FindGameObjectWithTag("player1").transform;
+		playerTwoSprite = GameObject.FindGameObjectWithTag ("player2").transform;
 		//pos1 - pos5 = player one grid left to right
 		pos1 = GameObject.FindGameObjectWithTag ("position1").transform;
 		pos2 = GameObject.FindGameObjectWithTag ("position2").transform;
@@ -37,164 +62,360 @@ public class ExecutionScript : MonoBehaviour {
 		pos8 = GameObject.FindGameObjectWithTag ("position8").transform;
 		pos9 = GameObject.FindGameObjectWithTag ("position9").transform;
 		pos10 = GameObject.FindGameObjectWithTag ("position10").transform;
-		//Add text for UI counter to equal the int counter
-		player1 = GameObject.Find ("Manager").GetComponent<PlayerOneManager>();
-		player2 = GameObject.Find ("Manager").GetComponent<PlayerTwoManager>();
-		pActions = GameObject.Find ("Manager").GetComponent<ActionManager>();
+		uiScript = GameObject.Find ("UIScript").GetComponent<UIScript>();
+		spriteRendererP1 = GameObject.Find("Player1").GetComponent<SpriteRenderer>();
+		spriteRendererP2 = GameObject.Find ("Player2").GetComponent<SpriteRenderer>();
+		Debug.Log ("Player1 Action Points: " + player1.playerOneActionPoints);
+		Debug.Log ("Player2 Action Points: " + player2.playerTwoActionPoints);
 	}
-
 	void Update() {
-		if(counter == 0) { //Fix counter to align with UI timer
-			for(int i=0; i<player1.playerOneMaxActionPoints; i++) {
-				//If the index for playerOnes action points was assigned to MOVE
-				if(pActions.playerOneActions[player1.playerOneMaxActionPoints] == ActionManager.playerActions.move) {
-					playerOneMove ();
+	skipCheck();
+		Debug.Log (player1.playerOneActionPoints);
+		Debug.Log (player2.playerTwoActionPoints);
+	  if(player1.playerOneActionPoints == 3 && player2.playerTwoActionPoints == 3 && uiScript.timerCount <= 0){
+			StartCoroutine("loopWait");
+			StartCoroutine("loopWait2");
+	  }
+		if(player1.playerOneFoodCount > player1.playerOneMaxFoodCount){
+			player1.playerOneFoodCount = player1.playerOneMaxFoodCount;
+		}
+		if(player2.playerTwoFoodCount > player2.playerTwoMaxFoodCount){
+			player2.playerTwoFoodCount = player2.playerTwoMaxFoodCount;
+		}
+	}
+	IEnumerator loopWait() {
+		for(int i =0; i<player1.playerOneMaxActionPoints;) {
+			//If the index for playerOnes action points was assigned to MOVE
+			if(pActions.playerOneActions[i] == ActionManager.playerActions.move) {
+				if(pActions.player1Grid[i] == ActionManager.playerOneGrid.buttonTab) {
+					player1.playerOneActionPoints--;
+					yield return new WaitForSeconds(turnTime);
+					playerOneSprite.position = pos1.position;
+					i++;
+					Debug.Log ("Player One is moving to pos1");
+					if(i == 3) {
+						break;
+					}
 				}
-				//If the index for playerOnes action points was assigned to TOSS
-				if(pActions.playerOneActions[player1.playerOneMaxActionPoints] == ActionManager.playerActions.toss) {
-					playerOneToss ();
+				if(pActions.player1Grid[i] == ActionManager.playerOneGrid.buttonQ) {
+					player1.playerOneActionPoints--;
+					yield return new WaitForSeconds(turnTime);
+					playerOneSprite.position = pos2.position;
+					i++;
+					Debug.Log ("Player One is moving to pos2");
+					if(i == 3) {
+						break;
+					}
 				}
-				//If the index for playerOnes action points was assigned to GRAB
-				if(pActions.playerOneActions[player1.playerOneMaxActionPoints] == ActionManager.playerActions.grab) {
-					playerOneGrab ();
+				if(pActions.player1Grid[i] == ActionManager.playerOneGrid.buttonW) {
+					player1.playerOneActionPoints--;
+					yield return new WaitForSeconds(turnTime);
+					playerOneSprite.position = pos3.position;
+					i++;
+					Debug.Log ("Player One is moving to pos3");
+					if(i == 3) {
+						break;
+					}
 				}
-				//If the index for playerOnes action points was assigned to SKIP
-				if(pActions.playerOneActions[player1.playerOneMaxActionPoints] == ActionManager.playerActions.skip) {
-					Debug.Log ("Player One Decided to skip!");
+				if(pActions.player1Grid[i] == ActionManager.playerOneGrid.buttonE) {
+					player1.playerOneActionPoints--;
+					yield return new WaitForSeconds(turnTime);
+					playerOneSprite.position = pos4.position;
+					i++;
+					Debug.Log ("Player One is moving to it's pos4");
+					if(i == 3) {
+						break;
+					}
 				}
-				if(pActions.playerTwoActions[player2.playerTwoMaxActionPoints] == ActionManager.playerActions.move) {
-					playerTwoMove();
+				if(pActions.player1Grid[i] == ActionManager.playerOneGrid.buttonR) {
+					player1.playerOneActionPoints--;
+					yield return new WaitForSeconds(turnTime);
+					playerOneSprite.position = pos5.position;
+					i++;
+					Debug.Log ("Player One is moving to it's pos5");
+					if(i == 3) {
+						break;
+					}
 				}
-				if(pActions.playerTwoActions[player2.playerTwoMaxActionPoints] == ActionManager.playerActions.toss) {
-					playerTwoToss();
+			}
+			//If the index for playerOnes action points was assigned to TOSS
+			if(pActions.playerOneActions[i] == ActionManager.playerActions.toss) {
+				if(pActions.player1Grid[i] == ActionManager.playerOneGrid.buttonTab) {
+					player1.playerOneActionPoints--;
+					yield return new WaitForSeconds(turnTime);
+					Instantiate(food2, playerOneSprite.position, Quaternion.identity);
+					pos6Toss = true;
+					player1.playerOneFoodCount--;
+					i++;
+					Debug.Log ("Player One is throwing at player2 pos6");
+					if(i == 3) {
+						break;
+					}
 				}
-				if(pActions.playerTwoActions[player2.playerTwoMaxActionPoints] == ActionManager.playerActions.grab) {
-					playerTwoGrab ();
+				if(pActions.player1Grid[i] == ActionManager.playerOneGrid.buttonQ) {
+					player1.playerOneActionPoints--;
+					yield return new WaitForSeconds(turnTime);
+					Instantiate(food2, playerOneSprite.position, Quaternion.identity);
+					pos7Toss = true;
+					player1.playerOneFoodCount--;
+					i++;
+					Debug.Log ("Player One is throwing at player2 pos7");
+					if(i == 3) {
+						break;
+					}
 				}
-				if(pActions.playerTwoActions[player2.playerTwoMaxActionPoints] == ActionManager.playerActions.skip) {
-					Debug.Log ("Player Two Decided to skip!");
+				if(pActions.player1Grid[i] == ActionManager.playerOneGrid.buttonW) {
+					player1.playerOneActionPoints--;
+					yield return new WaitForSeconds(turnTime);
+					player1.playerOneFoodCount--;
+					Instantiate(food2, playerOneSprite.position, Quaternion.identity);
+					pos8Toss = true;
+					i++;
+					Debug.Log ("Player One is throwing at player2 pos8");
+					if(i == 3) {
+						break;
+					}
+				}
+				if(pActions.player1Grid[i] == ActionManager.playerOneGrid.buttonE) {
+					player1.playerOneActionPoints--;
+					yield return new WaitForSeconds(turnTime);
+					Instantiate(food2, playerOneSprite.position, Quaternion.identity);
+					pos9Toss = true;
+					player1.playerOneFoodCount--;
+					i++;
+					Debug.Log ("Player One is throwing at player2 pos9");
+					if(i == 3) {
+						break;
+					}
+
+				}
+				if(pActions.player1Grid[i] == ActionManager.playerOneGrid.buttonR) {
+					player1.playerOneActionPoints--;
+					yield return new WaitForSeconds(turnTime);
+					Instantiate(food2, playerOneSprite.position, Quaternion.identity);
+					pos10Toss = true;
+					player1.playerOneFoodCount--;
+					i++;
+					Debug.Log ("Player One is throwing at player2 pos10");
+					if(i == 3) {
+						break;
+					}
+				}
+			}
+			//If the index for playerOnes action points was assigned to GRAB
+			if(pActions.playerOneActions[i] == ActionManager.playerActions.grab) {
+				player1.playerOneActionPoints--;
+				yield return new WaitForSeconds(turnTime);
+				spriteCheck ();
+				i++;
+				Debug.Log ("Player One Grabbed Food");
+				if(i == 3) {
+					break;
+				}
+			}
+			//If the index for playerOnes action points was assigned to SKIP
+			if(pActions.playerOneActions[i] == ActionManager.playerActions.skip) {
+				player1.playerOneActionPoints--;
+				yield return new WaitForSeconds(turnTime);
+				i++;
+				Debug.Log ("Player One Decided to skip!");
+				if(i == 3) {
+					break;
 				}
 			}
 		}
 	}
-	void playerOneMove() {
-		if(pActions.player1Grid[player1.playerOneMaxActionPoints] == ActionManager.playerOneGrid.buttonTab) {
-			playerOneSprite.position = pos1.position; //[X][][][][]
-			Debug.Log ("Player One is moving to pos1");
-		}
-		if(pActions.player1Grid[player1.playerOneMaxActionPoints] == ActionManager.playerOneGrid.buttonQ) {
-			playerOneSprite.position = pos2.position; //[][X][][][]
-			Debug.Log ("Player One is moving to pos2");
-		}
-		if(pActions.player1Grid[player1.playerOneMaxActionPoints] == ActionManager.playerOneGrid.buttonW) {
-			playerOneSprite.position = pos3.position; //[][][X][][]
-			Debug.Log ("Player One is moving to pos3");
-		}
-		if(pActions.player1Grid[player1.playerOneMaxActionPoints] == ActionManager.playerOneGrid.buttonE) {
-			playerOneSprite.position = pos4.position; //[][][][X][]
-			Debug.Log ("Player One is moving to it's pos4");
-		}
-		if(pActions.player1Grid[player1.playerOneMaxActionPoints] == ActionManager.playerOneGrid.buttonR) {
-			playerOneSprite.position = pos5.position; //[][][][][X]
-			Debug.Log ("Player One is moving to it's pos5");
+	IEnumerator loopWait2() {
+		for(int j = 0; j <player2.playerTwoMaxActionPoints;) {
+			if(pActions.playerTwoActions[j] == ActionManager.playerActions.move) {
+				if(pActions.player2Grid[j] == ActionManager.playerTwoGrid.buttonI) {
+					player2.playerTwoActionPoints--;
+					yield return new WaitForSeconds(turnTime);
+					playerTwoSprite.position = pos6.position;
+					j++;
+					Debug.Log ("Player Two is moving to pos6");
+					if(j == 3) {
+						break;
+					}
+				}
+				if(pActions.player2Grid[j] == ActionManager.playerTwoGrid.buttonO) {
+					player2.playerTwoActionPoints--;
+					yield return new WaitForSeconds(turnTime);
+					playerTwoSprite.position = pos7.position;
+					j++;
+					Debug.Log ("Player Two is moving to pos7");
+					if(j == 3) {
+						break;
+					}
+				}
+				if(pActions.player2Grid[j] == ActionManager.playerTwoGrid.buttonP) {
+					player2.playerTwoActionPoints--;
+					yield return new WaitForSeconds(turnTime);
+					playerTwoSprite.position = pos8.position;
+					j++;
+					Debug.Log ("Player Two is moving to pos8");
+					if(j == 3) {
+						break;
+					}
+				}
+				if(pActions.player2Grid[j] == ActionManager.playerTwoGrid.buttonLS) {
+					player2.playerTwoActionPoints--;
+					yield return new WaitForSeconds(turnTime);
+					j++;
+					Debug.Log ("Player Two is moving to pos9");
+					playerTwoSprite.position = pos9.position;
+					if(j == 3) {
+						break;
+					}
+				}
+				if(pActions.player2Grid[j] == ActionManager.playerTwoGrid.buttonRS) {
+					player2.playerTwoActionPoints--;
+					yield return new WaitForSeconds(turnTime);
+					playerTwoSprite.position = pos10.position;
+					j++;
+					Debug.Log ("Player Two is moving to pos10");
+					if(j == 3) {
+						break;
+					}
+				}
+			}
+			if(pActions.playerTwoActions[j] == ActionManager.playerActions.toss) {
+				if(pActions.player2Grid[j] == ActionManager.playerTwoGrid.buttonI) {
+					player2.playerTwoActionPoints--;
+					yield return new WaitForSeconds(turnTime);
+					Instantiate(food, playerTwoSprite.position, Quaternion.identity);
+					pos1Toss = true;
+					player2.playerTwoFoodCount--;
+					j++;
+					Debug.Log ("Player two is throwing at player1 pos1");
+					if(j == 3) {
+						break;
+					}
+				}
+				if(pActions.player2Grid[j] == ActionManager.playerTwoGrid.buttonO) {
+					player2.playerTwoActionPoints--;
+					yield return new WaitForSeconds(turnTime);
+					Instantiate(food, playerTwoSprite.position, Quaternion.identity);
+					pos2Toss = true;
+					player2.playerTwoFoodCount--;
+					j++;
+					Debug.Log ("Player two is throwing at player1 pos2");
+					if(j == 3) {
+						break;
+					}
+				}
+				if(pActions.player2Grid[j] == ActionManager.playerTwoGrid.buttonP) {
+					player2.playerTwoActionPoints--;
+					yield return new WaitForSeconds(turnTime);
+					Instantiate(food, playerTwoSprite.position, Quaternion.identity);
+					pos3Toss = true;
+					player2.playerTwoFoodCount--;
+					j++;
+					Debug.Log ("Player two is throwing at player1 pos3");
+					if(j == 3) {
+						break;
+					}
+				}
+				if(pActions.player2Grid[j] == ActionManager.playerTwoGrid.buttonLS) {
+					player2.playerTwoActionPoints--;
+					yield return new WaitForSeconds(turnTime);
+					Instantiate(food, playerTwoSprite.position, Quaternion.identity);
+					pos4Toss = true;
+					player2.playerTwoFoodCount--;
+					j++;
+					Debug.Log ("Player two is throwing at player1 pos4");
+					if(j == 3) {
+						break;
+					}
+				}
+				if(pActions.player2Grid[j] == ActionManager.playerTwoGrid.buttonRS) {
+					player2.playerTwoActionPoints--;
+					yield return new WaitForSeconds(turnTime);
+					Instantiate(food, playerTwoSprite.position, Quaternion.identity);
+					pos5Toss = true;
+					player2.playerTwoFoodCount--;
+					j++;
+					Debug.Log ("Player two is throwing at player1 pos5");
+					if(j == 3) {
+						break;
+					}
+				}
+			}
+			if(pActions.playerTwoActions[j] == ActionManager.playerActions.grab) {
+				player2.playerTwoActionPoints--;
+				yield return new WaitForSeconds(turnTime);
+				spriteCheck();
+				j++;
+				Debug.Log ("Player Two Grabbed Food");
+				if(j == 3) {
+					break;
+				}
+			}
+			if(pActions.playerTwoActions[j] == ActionManager.playerActions.skip) {
+				player2.playerTwoActionPoints--;
+				yield return new WaitForSeconds(turnTime);
+				j++;
+				Debug.Log ("Player Two Decided to skip!");
+				if(j == 3) {
+					break;
+				}
+			}
 		}
 	}
-	void playerOneGrab() {
-		player1.playerOneFoodCount++;
-		Debug.Log ("Player One Grabbed Food");
-	}
-	void playerOneToss() {
-		if(pActions.player1Grid[player1.playerOneMaxActionPoints] == ActionManager.playerOneGrid.buttonTab) {
-			//Instantiate Food from Player1 to pos6.position
-			Instantiate(food, playerOneSprite.position, Quaternion.identity);
-			foodMove.transform.Translate(pos6.position);
-			player1.playerOneFoodCount--;
-			Debug.Log ("Player One is throwing at player2 pos6");
+	void skipCheck() {
+		if(player1.playerOneActionPoints == 0 && uiScript.timerCount >= 0 && uiScript.timerCount <= 0.2) {
+			pActions.playerOneActions[0] = ActionManager.playerActions.skip;
+			pActions.playerOneActions[1] = ActionManager.playerActions.skip;
+			pActions.playerOneActions[2] = ActionManager.playerActions.skip;
+			player1.playerOneActionPoints += 3;
 		}
-		if(pActions.player1Grid[player1.playerOneMaxActionPoints] == ActionManager.playerOneGrid.buttonQ) {
-			//Instantiate Food from Player1 to pos6.position
-			Instantiate(food, playerOneSprite.position, Quaternion.identity);
-			foodMove.transform.Translate (pos7.position);
-			player1.playerOneFoodCount--;
-			Debug.Log ("Player One is throwing at player2 pos7");
+		else if(player1.playerOneActionPoints == 1 && uiScript.timerCount >= 0 && uiScript.timerCount <= 0.2) {
+			pActions.playerOneActions[1] = ActionManager.playerActions.skip;
+			pActions.playerOneActions[2] = ActionManager.playerActions.skip;
+			player1.playerOneActionPoints += 2;
+			if(player1.playerOneActionPoints > 3) {
+					player1.playerOneActionPoints = 3;
+			}
 		}
-		if(pActions.player1Grid[player1.playerOneMaxActionPoints] == ActionManager.playerOneGrid.buttonW) {
-			//Instantiate Food from Player1 to pos6.position
-			Instantiate(food, playerOneSprite.position, Quaternion.identity);
-			foodMove.transform.Translate (pos8.position);
-			player1.playerOneFoodCount--;
-			Debug.Log ("Player One is throwing at player2 pos8");
+		else if(player1.playerOneActionPoints == 2 && uiScript.timerCount >= 0 && uiScript.timerCount <= 0.2) {
+			pActions.playerOneActions[2] = ActionManager.playerActions.skip;
+			player1.playerOneActionPoints++;
+			if(player1.playerOneActionPoints > 3) {
+					player1.playerOneActionPoints = 3;
+			}
 		}
-		if(pActions.player1Grid[player1.playerOneMaxActionPoints] == ActionManager.playerOneGrid.buttonE) {
-			//Instantiate Food from Player1 to pos6.position
-			Instantiate(food, playerOneSprite.position, Quaternion.identity);
-			foodMove.transform.Translate (pos9.position);
-			player1.playerOneFoodCount--;
-			Debug.Log ("Player One is throwing at player2 pos9");
+		if(player2.playerTwoActionPoints == 0 && uiScript.timerCount >= 0 && uiScript.timerCount <= 0.2) {
+			pActions.playerTwoActions[0] = ActionManager.playerActions.skip;
+			pActions.playerTwoActions[1] = ActionManager.playerActions.skip;
+			pActions.playerTwoActions[2] = ActionManager.playerActions.skip;
+			player2.playerTwoActionPoints +=3;
 		}
-		if(pActions.player1Grid[player1.playerOneMaxActionPoints] == ActionManager.playerOneGrid.buttonR) {
-			//Instantiate Food from Player1 to pos6.position
-			Instantiate(food, playerOneSprite.position, Quaternion.identity);
-			foodMove.transform.Translate (pos10.position);
-			player1.playerOneFoodCount--;
-			Debug.Log ("Player One is throwing at player2 pos10");
+		else if(player2.playerTwoActionPoints == 1 && uiScript.timerCount >= 0 && uiScript.timerCount <= 0.2) {
+			pActions.playerTwoActions[1] = ActionManager.playerActions.skip;
+			pActions.playerTwoActions[2] = ActionManager.playerActions.skip;
+			player2.playerTwoActionPoints += 2;
+		}
+		else if(player2.playerTwoActionPoints == 2 && uiScript.timerCount >= 0 && uiScript.timerCount <= 0.2) {
+			pActions.playerTwoActions[2] = ActionManager.playerActions.skip;
+			player2.playerTwoActionPoints++;
 		}
 	}
-	void playerTwoMove() {
-		if(pActions.player2Grid[player2.playerTwoMaxActionPoints] == ActionManager.playerTwoGrid.buttonI) {
-			playerTwoSprite.position = pos6.position;
-			Debug.Log ("Player Two is moving to pos6");
+	void spriteCheck() {
+		if(player1.playerOneFoodCount == 1) {
+			spriteRendererP1.sprite = playerOneF1;
 		}
-		if(pActions.player2Grid[player2.playerTwoMaxActionPoints] == ActionManager.playerTwoGrid.buttonO) {
-			playerTwoSprite.position = pos7.position;
-			Debug.Log ("Player Two is moving to pos7");
+		else if(player1.playerOneFoodCount == 2) {
+			spriteRendererP1.sprite = playerOneF2;
 		}
-		if(pActions.player2Grid[player2.playerTwoMaxActionPoints] == ActionManager.playerTwoGrid.buttonP) {
-			playerTwoSprite.position = pos8.position;
-			Debug.Log ("Player Two is moving to pos8");
+		else if(player1.playerOneFoodCount == 0){
+			spriteRendererP1.sprite = playerOneIdle;
 		}
-		if(pActions.player2Grid[player2.playerTwoMaxActionPoints] == ActionManager.playerTwoGrid.buttonLS) {
-			playerTwoSprite.position = pos9.position;
-			Debug.Log ("Player Two is moving to pos9");
+		if(player2.playerTwoFoodCount == 1 || player2.playerTwoFoodCount == 2) {
+			spriteRendererP2.sprite = playerTwoF1;
 		}
-		if(pActions.player2Grid[player2.playerTwoMaxActionPoints] == ActionManager.playerTwoGrid.buttonRS) {
-			playerTwoSprite.position = pos10.position;
-			Debug.Log ("Player Two is moving to pos10");
+		else if(player2.playerTwoFoodCount == 0) {
+			spriteRendererP2.sprite = playerTwoIdle;
 		}
 	}
-	void playerTwoGrab() {
-		player2.playerTwoFoodCount++;
-	}
-	void playerTwoToss() {
-		if(pActions.player2Grid[player2.playerTwoMaxActionPoints] == ActionManager.playerTwoGrid.buttonI) {
-			Instantiate(food, playerTwoSprite.position, Quaternion.identity);
-			foodMove.transform.Translate (pos1.position);
-			player2.playerTwoFoodCount--;
-			Debug.Log ("Player two is throwing at player1 pos1");
-		}
-		if(pActions.player2Grid[player2.playerTwoMaxActionPoints] == ActionManager.playerTwoGrid.buttonO) {
-			Instantiate(food, playerTwoSprite.position, Quaternion.identity);
-			foodMove.transform.Translate (pos2.position);
-			player2.playerTwoFoodCount--;
-			Debug.Log ("Player two is throwing at player1 pos2");
-		}
-		if(pActions.player2Grid[player2.playerTwoMaxActionPoints] == ActionManager.playerTwoGrid.buttonP) {
-			Instantiate(food, playerTwoSprite.position, Quaternion.identity);
-			foodMove.transform.Translate (pos3.position);
-			player2.playerTwoFoodCount--;
-			Debug.Log ("Player two is throwing at player1 pos3");
-		}
-		if(pActions.player2Grid[player2.playerTwoMaxActionPoints] == ActionManager.playerTwoGrid.buttonLS) {
-			Instantiate(food, playerTwoSprite.position, Quaternion.identity);
-			foodMove.transform.Translate (pos4.position);
-			player2.playerTwoFoodCount--;
-			Debug.Log ("Player two is throwing at player1 pos4");
-		}
-		if(pActions.player2Grid[player2.playerTwoMaxActionPoints] == ActionManager.playerTwoGrid.buttonRS) {
-			Instantiate(food, playerTwoSprite.position, Quaternion.identity);
-			foodMove.transform.Translate (pos5.position);
-			player2.playerTwoFoodCount--;
-			Debug.Log ("Player two is throwing at player1 pos5");
-		}
-	}
+
 }

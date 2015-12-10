@@ -11,9 +11,7 @@ public class ActionManager : MonoBehaviour, IGameManager {
 	public playerActions[] playerTwoActions;
 	public playerOneGrid[] player1Grid;
 	public playerTwoGrid[] player2Grid;
-	//public Vector2[] playerOneChoices;
-	//public Vector2[] playerTwoChoices;
-	//Organized the Enumerators 11/26/15 Eric Olson
+
 	public enum playerActions{ //Actions the players move
 		move,
 		toss, 
@@ -40,12 +38,13 @@ public class ActionManager : MonoBehaviour, IGameManager {
 		buttonRS
 	}; //LS = left square bracket || RS = right square bracket
 
-	public void Startup () {
-		//playerOneActions = playerActions.move;
+	public void Startup() {
+		Debug.Log ("Action Manager has started!");
+		status = ManagerStatus.Started;
+		player1 = gameObject.GetComponent<PlayerOneManager>();
+		player2 = gameObject.GetComponent<PlayerTwoManager>();
 		playerOneActions = new playerActions[player1.playerOneMaxActionPoints];
 		playerTwoActions = new playerActions[player2.playerTwoMaxActionPoints];
-		player1 = GameObject.Find ("Manager").GetComponent<PlayerOneManager>();
-		player2 = GameObject.Find ("Manager").GetComponent<PlayerTwoManager>();
 		player1Grid = new playerOneGrid[player1.playerOneMaxActionPoints];
 		player2Grid = new playerTwoGrid[player2.playerTwoMaxActionPoints];
 	}

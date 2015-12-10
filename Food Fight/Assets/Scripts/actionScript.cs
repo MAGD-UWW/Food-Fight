@@ -8,9 +8,13 @@ public class actionScript : MonoBehaviour {
 
 	bool p1throw = false;
 	bool p1move = false;
+	bool p1skip = true;
+	bool p1grab = true;
 
 	bool p2throw = false;
 	bool p2move = false;
+	bool p2skip = true;
+	bool p2grab = true;
 	//player1 movement positions
 	bool p1 = false;
 	bool p2 = false;
@@ -25,265 +29,319 @@ public class actionScript : MonoBehaviour {
 	bool p9 = false;
 	bool p10 = false;
 
+	//player1 and player2 X
+	public GameObject redXP1;
+	public GameObject redXP2;
+
+	public UIScript uiScript;
+	
+
 	// Use this for initialization
 	void Start () {
 		player1 = GameObject.Find("Manager").GetComponent<PlayerOneManager>();
 		player2 = GameObject.Find("Manager").GetComponent<PlayerTwoManager>();
 		pActions = GameObject.Find ("Manager").GetComponent<ActionManager> ();
+		redXP1 = GameObject.Find ("redXP1");
+		redXP2 = GameObject.Find ("redXP2");
+		redXP1.SetActive (false);
+		redXP2.SetActive (false);
+		uiScript = GameObject.Find ("UIScript").GetComponent<UIScript>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		Actions ();
+		if(player1.playerOneActionPoints < player1.playerOneMaxActionPoints) {
+			Actions ();
+		} else {
+			//Debug.Log ("Max Points Chosen for Player1");
+		}
+		if(player2.playerTwoActionPoints < player2.playerTwoMaxActionPoints) {
+			Actions();
+		} else {
+			//Debug.Log ("Max Points Chosen for Player2");
+		}
 	}
 
 	void Actions(){
 		//////////////////////PLAYER 1 ACTION AND GRID SELECTIONS////////////////////////////////
 		//ACTION SELECTION (toss)
-		if(Input.GetKey(KeyCode.D)){
+		if(Input.GetKey(KeyCode.D) && player1.playerOneFoodCount > 0){
 			pActions.playerOneActions[player1.playerOneActionPoints] = ActionManager.playerActions.toss;
 			p1throw = true;
-			Debug.Log ("player 1 picked toss");
+			Debug.Log ("ACTION: PLAYER1 TOSS");
+		}
+		else if(Input.GetKey(KeyCode.D) && player1.playerOneFoodCount == 0) {
+			redXP1.SetActive (true);
+		}
+		if(Input.GetKeyUp (KeyCode.D)) {
+			redXP1.SetActive (false);
 		}
 		//GRID SELECTION SPOT
 		if((p1throw == true) && (Input.GetKey(KeyCode.Tab))){
 			pActions.player1Grid[player1.playerOneActionPoints] = ActionManager.playerOneGrid.buttonTab;
+			player1.playerOneActionPoints++;
 			p1throw = false;
-			player1.playerOneActionPoints ++;
-			Debug.Log ("p1 toss at position 6");
+			Debug.Log ("ACTION: PLAYER1 TOSS POS 6");
 		}
 		if((p1throw == true) && (Input.GetKey(KeyCode.Q))){
 			pActions.player1Grid[player1.playerOneActionPoints] = ActionManager.playerOneGrid.buttonQ;
+			player1.playerOneActionPoints++;
 			p1throw = false;
-			player1.playerOneActionPoints ++;
-			Debug.Log ("p1 toss at position 7");
+			Debug.Log ("ACTION: PLAYER1 TOSS POS 7");
 		}
 		if((p1throw == true) && (Input.GetKey(KeyCode.W))){
 			pActions.player1Grid[player1.playerOneActionPoints] = ActionManager.playerOneGrid.buttonW;
+			player1.playerOneActionPoints++;
 			p1throw = false;
-			player1.playerOneActionPoints ++;
-			Debug.Log ("p1 toss at position 8");
+			Debug.Log ("ACTION: PLAYER1 TOSS POS 8");
 		}
 		if((p1throw == true) && (Input.GetKey(KeyCode.E))){
 			pActions.player1Grid[player1.playerOneActionPoints] = ActionManager.playerOneGrid.buttonE;
+			player1.playerOneActionPoints++;
 			p1throw = false;
-			player1.playerOneActionPoints ++;
-			Debug.Log ("p1 toss at position 9");
+			Debug.Log ("ACTION: PLAYER1 TOSS POS 9");
 		}
 		if((p1throw == true) && (Input.GetKey(KeyCode.R))){
 			pActions.player1Grid[player1.playerOneActionPoints] = ActionManager.playerOneGrid.buttonR;
+			player1.playerOneActionPoints++;
 			p1throw = false;
-			player1.playerOneActionPoints ++;
-			Debug.Log ("p1 toss at position 10");
+			Debug.Log ("ACTION: PLAYER1 TOSS POS 10");
 		}
 		// ACTION SELCETION (move)
 		if(Input.GetKey (KeyCode.A)){
 			pActions.playerOneActions[player1.playerOneActionPoints] = ActionManager.playerActions.move;
 			p1move = true;
-			Debug.Log ("player 1 chose to move");
+			Debug.Log ("ACTION: PLAYER1 MOVE");
 		}
 		// GRID SELECTION SPOT
 		if ((p1move == true) && (Input.GetKey (KeyCode.Tab)) && (p3 == false) && (p4 == false) && (p5 == false)) {
 			pActions.player1Grid[player1.playerOneActionPoints] = ActionManager.playerOneGrid.buttonTab;
-			player1.playerOneActionPoints ++;
-
+			player1.playerOneActionPoints++;
 			p1 = true;
 			p2 = false;
 			p3 = false;
 			p4 = false;
 			p5 = false;
 			p1move = false;
-			Debug.Log ("p1 move to position 1");
+			Debug.Log ("ACTION: PLAYER1 MOVE POS1");
 		}
 		if ((p1move == true) && (Input.GetKey (KeyCode.Q)) && (p4 == false) && (p5 == false)) { 
-			pActions.player1Grid[player1.playerOneActionPoints] = ActionManager.playerOneGrid.buttonTab;
-			player1.playerOneActionPoints ++;
-
+			pActions.player1Grid[player1.playerOneActionPoints] = ActionManager.playerOneGrid.buttonQ;
+			player1.playerOneActionPoints++;
 			p2 = true;
 			p1 = false;
 			p3 = false;
 			p4 = false;
 			p5 = false;
 			p1move = false;
-			Debug.Log ("p1 move to position 2");
+			Debug.Log ("ACTION: PLAYER1 MOVE POS2");
 		}
 		if ((p1move == true)&&(Input.GetKey (KeyCode.W)) && (p1 == false) && (p5 == false)){ 
-			pActions.player1Grid[player1.playerOneActionPoints] = ActionManager.playerOneGrid.buttonTab;
-			player1.playerOneActionPoints ++;
-
+			pActions.player1Grid[player1.playerOneActionPoints] = ActionManager.playerOneGrid.buttonW;
+			player1.playerOneActionPoints++;
 			p3 = true;
 			p1 = false;
 			p2 = false;
 			p4 = false;
 			p5 = false;
 			p1move = false;
-			Debug.Log ("p1 move to position 3");
+			Debug.Log ("ACTION: PLAYER1 MOVE POS3");
 		}
 		if ((p1move == true) &&(Input.GetKey (KeyCode.E)) && (p1 == false) && (p2 == false)){ 
-			pActions.player1Grid[player1.playerOneActionPoints] = ActionManager.playerOneGrid.buttonTab;
-			player1.playerOneActionPoints ++;
-
+			pActions.player1Grid[player1.playerOneActionPoints] = ActionManager.playerOneGrid.buttonE;
+			player1.playerOneActionPoints++;
 			p4 = true;
 			p1 = false;
 			p2 = false;
 			p3 = false;
 			p5 = false;
 			p1move = false;
-			Debug.Log ("p1 move to position 4");
+			Debug.Log ("ACTION: PLAYER1 MOVE POS4");
 		}
 		if ((p1move == true) &&(Input.GetKey (KeyCode.R)) && (p1 == false) && (p2 == false) && (p3 == false)){ 
-			pActions.player1Grid[player1.playerOneActionPoints] = ActionManager.playerOneGrid.buttonTab;
-			player1.playerOneActionPoints ++;
-
+			pActions.player1Grid[player1.playerOneActionPoints] = ActionManager.playerOneGrid.buttonR;
+			player1.playerOneActionPoints++;
 			p5 = true;
 			p1 = false;
 			p2 = false;
 			p3 = false;
 			p4 = false;
 			p1move = false;
-			Debug.Log ("p1 move to position 5");
+			Debug.Log ("ACTION: PLAYER1 MOVE POS5");
 		}
 
 		// ACTION SELECTION (skip)
-		if (Input.GetKey (KeyCode.LeftShift)) {
+		if ((p1skip == true) && (Input.GetKey (KeyCode.LeftShift))) {
 			pActions.playerOneActions[player1.playerOneActionPoints] = ActionManager.playerActions.skip;
-			player1.playerOneActionPoints ++;
-			Debug.Log ("player 1 chose to skip");
+			player1.playerOneActionPoints++;
+			p1skip = false;
+			Debug.Log ("ACTION: PLAYER1 SKIP");
+		}
+		if ((p1skip == false) && (Input.GetKeyUp (KeyCode.LeftShift))) {
+			p1skip = true;
 		}
 
+
 		// ACTION SELECTION (grab)
-		if (Input.GetKey (KeyCode.S)) {
+		if ((p1grab == true) && (Input.GetKey (KeyCode.S))) {
 			if(player1.playerOneFoodCount < player1.playerOneMaxFoodCount){
 				pActions.playerOneActions[player1.playerOneActionPoints] = ActionManager.playerActions.grab;
-				player1.playerOneActionPoints ++;
-				Debug.Log ("player 1 picked up food");
-			}else{
-				Debug.Log ("Can't pick up more food");
+				player1.playerOneFoodCount++;
+				player1.playerOneActionPoints++;
+				p1grab = false;
+				Debug.Log ("ACTION: PLAYER1 GRAB");
 			}
+			else {
+				redXP1.SetActive (true);
+				Debug.Log ("Player1 Too much Food");
+			}
+		}
+		if ((p1grab == false) && (Input.GetKeyUp (KeyCode.S))) {
+			p1grab = true;
+		}
+		if(Input.GetKeyUp (KeyCode.S)) {
+			redXP1.SetActive(false);
 		}
 
 		//////////////////////////////////PLAYER 2 ACTION AND GRID SELECTIONS///////////////////////////////////
 		//ACTION SELECTION (toss)
-		if(Input.GetKey (KeyCode.Semicolon)){
+		if(Input.GetKey (KeyCode.Semicolon) && player2.playerTwoFoodCount > 0){
 			pActions.playerTwoActions[player2.playerTwoActionPoints] = ActionManager.playerActions.toss;
 			p2throw = true;
-			Debug.Log ("player 2 chose to toss");
+			Debug.Log ("ACTION: PLAYER2 TOSS");
+		}
+		else if(Input.GetKey (KeyCode.Semicolon) && player2.playerTwoFoodCount == 0) {
+			redXP2.SetActive(true);
+		}
+		if(Input.GetKeyUp (KeyCode.Semicolon)) {
+			redXP2.SetActive (false);
 		}
 
 		//GRID SELECTION SPOT
 		if((p2throw == true) && (Input.GetKey(KeyCode.I))){
 			pActions.player2Grid[player2.playerTwoActionPoints] = ActionManager.playerTwoGrid.buttonI;
-			p2throw = false;
 			player2.playerTwoActionPoints ++;
-			Debug.Log ("p2 toss at position 1");
+			p2throw = false;
+			Debug.Log ("ACTION: PLAYER2 TOSS POS1");
 		}
 		if((p2throw == true) && (Input.GetKey(KeyCode.O))){
-			pActions.player2Grid[player2.playerTwoActionPoints] = ActionManager.playerTwoGrid.buttonO1;
-			p2throw = false;
+			pActions.player2Grid[player2.playerTwoActionPoints] = ActionManager.playerTwoGrid.buttonO;
 			player2.playerTwoActionPoints ++;
-			Debug.Log ("p2 toss at position 2");
+			p2throw = false;
+			Debug.Log ("ACTION: PLAYER2 TOSS POS2");
 		}
 		if((p2throw == true) && (Input.GetKey(KeyCode.P))){
 			pActions.player2Grid[player2.playerTwoActionPoints] = ActionManager.playerTwoGrid.buttonP;
-			p2throw = false;
 			player2.playerTwoActionPoints ++;
-			Debug.Log ("p2 toss at position 3");
+			p2throw = false;
+			Debug.Log ("ACTION: PLAYER2 TOSS POS3");
 		}
 		if((p2throw == true) && (Input.GetKey(KeyCode.LeftBracket))){
 			pActions.player2Grid[player2.playerTwoActionPoints] = ActionManager.playerTwoGrid.buttonLS;
-			p2throw = false;
 			player2.playerTwoActionPoints ++;
-			Debug.Log ("p2 toss at position 4");
+			p2throw = false;
+			Debug.Log ("ACTION: PLAYER2 TOSS POS4");
 		}
 		if((p2throw == true) && (Input.GetKey(KeyCode.RightBracket))){
 			pActions.player2Grid[player2.playerTwoActionPoints] = ActionManager.playerTwoGrid.buttonRS;
-			p2throw = false;
 			player2.playerTwoActionPoints ++;
-			Debug.Log ("p2 toss at position 5");
+			p2throw = false;
+				Debug.Log ("ACTION: PLAYER2 TOSS POS5");
 		}
 		// ACTION SELCETION (move)
 		if(Input.GetKey (KeyCode.K)){
 			pActions.playerTwoActions[player2.playerTwoActionPoints] = ActionManager.playerActions.move;
 			p2move = true;
-			Debug.Log ("player 2 chose to move");
+				Debug.Log ("ACTION: PLAYER2 MOVE");
 		}
 		// GRID SELECTION SPOT
 		if ((p2move == true) && (Input.GetKey (KeyCode.I)) && (p8 == false) && (p9 == false) && (p10 == false)) {
 			pActions.player2Grid[player2.playerTwoActionPoints] = ActionManager.playerTwoGrid.buttonI;
 			player2.playerTwoActionPoints ++;
-			
 			p6 = true;
 			p7 = false;
 			p8 = false;
 			p9 = false;
 			p10 = false;
 			p2move = false;
-			Debug.Log ("p2 move to position 6");
+			Debug.Log ("ACTION: PLAYER2 MOVE POS6");
 		}
 		if ((p2move == true) && (Input.GetKey (KeyCode.O)) && (p9 == false) && (p10 == false)) { 
-			pActions.player2Grid[player2.playerTwoActionPoints] = ActionManager.playerTwoGrid.buttonO1;
+			pActions.player2Grid[player2.playerTwoActionPoints] = ActionManager.playerTwoGrid.buttonO;
 			player2.playerTwoActionPoints ++;
-			
 			p7 = true;
 			p6 = false;
 			p8 = false;
 			p9 = false;
 			p10 = false;
 			p2move = false;
-			Debug.Log ("p2 move to position 7");
+			Debug.Log ("ACTION: PLAYER2 MOVE POS7");
 		}
 		if ((p2move == true)&&(Input.GetKey (KeyCode.P)) && (p6 == false) && (p10 == false)){ 
 			pActions.player2Grid[player2.playerTwoActionPoints] = ActionManager.playerTwoGrid.buttonP;
 			player2.playerTwoActionPoints ++;
-			
 			p8 = true;
 			p6 = false;
 			p7 = false;
 			p9 = false;
 			p10 = false;
 			p2move = false;
-			Debug.Log ("p2 move to position 8");
+			Debug.Log ("ACTION: PLAYER2 MOVE POS8");
 		}
 		if ((p2move == true) &&(Input.GetKey (KeyCode.LeftBracket)) && (p6 == false) && (p7 == false)){ 
 			pActions.player2Grid[player2.playerTwoActionPoints] = ActionManager.playerTwoGrid.buttonLS;
 			player2.playerTwoActionPoints ++;
-			
 			p9 = true;
 			p6 = false;
 			p7 = false;
 			p8 = false;
 			p10 = false;
 			p2move = false;
-			Debug.Log ("p2 move to position 9");
+			Debug.Log ("ACTION: PLAYER2 MOVE POS9");
 		}
 		if ((p2move == true) &&(Input.GetKey (KeyCode.RightBracket)) && (p6 == false) && (p7 == false) && (p8 == false)){ 
 			pActions.player2Grid[player2.playerTwoActionPoints] = ActionManager.playerTwoGrid.buttonRS;
 			player2.playerTwoActionPoints ++;
-			
 			p10 = true;
 			p6 = false;
 			p7 = false;
 			p8 = false;
 			p9 = false;
 			p2move = false;
-			Debug.Log ("p2 move to position 10");
+			Debug.Log ("ACTION: PLAYER2 MOVE POS10");
 		}
 		// ACTION SELECTION (skip)
-		if (Input.GetKey (KeyCode.RightShift)) {
+		if ((p2skip == true) && (Input.GetKey (KeyCode.RightShift))) {
 			pActions.playerTwoActions[player2.playerTwoActionPoints] = ActionManager.playerActions.skip;
 			player2.playerTwoActionPoints ++;
-			Debug.Log ("player 2 chose to skip");
+			p2skip = false;
+			Debug.Log ("ACTION: PLAYER2 SKIP");
+		}
+
+		if ((p2skip == false) && (Input.GetKeyUp (KeyCode.RightShift))) {
+			p2skip = true;
 		}
 		
 		// ACTION SELECTION (grab)
-		if (Input.GetKey (KeyCode.L)) {
+		if ((p2grab == true) && (Input.GetKey (KeyCode.L))) {
 			if(player2.playerTwoFoodCount < player2.playerTwoMaxFoodCount){
 				pActions.playerTwoActions[player2.playerTwoActionPoints] = ActionManager.playerActions.grab;
-				player2.playerTwoActionPoints ++;
-				Debug.Log ("player 2 picked up more food");
-			}else{
-				Debug.Log ("Can't pick up more food");
+				player2.playerTwoFoodCount++;
+				player2.playerTwoActionPoints++;
+				p2grab = false;
+				Debug.Log ("ACTION: PLAYER2 GRAB");
+				Debug.Log ("Player2 Food Count: " + player2.playerTwoFoodCount);
 			}
+			else{
+				redXP2.SetActive (true);
+				Debug.Log ("ACTION: PLAYER2 TOO MUCH FOOD");
+			}
+		}
+		if ((p2grab == false) && (Input.GetKeyUp (KeyCode.L))) {
+			p2grab = true;
+		}
+		if(Input.GetKeyUp (KeyCode.L)) {
+			redXP2.SetActive (false);
 		}
 	}
 }
