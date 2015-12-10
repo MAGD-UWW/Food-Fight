@@ -15,7 +15,7 @@ public class FoodToss1 : MonoBehaviour {
 	
 
 	void Update () {
-		Debug.Log("CHRISTIAN SMELLS!");
+		//Debug.Log("CHRISTIAN SMELLS!");
 		if(exeScript.pos6Toss == true) {
 			Vector3 newPos = (exeScript.pos6.position - transform.position);
 			mushBody.velocity = newPos * 5;

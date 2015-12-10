@@ -146,6 +146,7 @@ public class ExecutionScript : MonoBehaviour {
 					Instantiate(food2, playerOneSprite.position, Quaternion.identity);
 					pos6Toss = true;
 					player1.playerOneFoodCount--;
+					spriteCheck ();
 					i++;
 					Debug.Log ("Player One is throwing at player2 pos6");
 					if(i == 3) {
@@ -158,6 +159,7 @@ public class ExecutionScript : MonoBehaviour {
 					Instantiate(food2, playerOneSprite.position, Quaternion.identity);
 					pos7Toss = true;
 					player1.playerOneFoodCount--;
+					spriteCheck ();
 					i++;
 					Debug.Log ("Player One is throwing at player2 pos7");
 					if(i == 3) {
@@ -167,9 +169,10 @@ public class ExecutionScript : MonoBehaviour {
 				if(pActions.player1Grid[i] == ActionManager.playerOneGrid.buttonW) {
 					player1.playerOneActionPoints--;
 					yield return new WaitForSeconds(turnTime);
-					player1.playerOneFoodCount--;
 					Instantiate(food2, playerOneSprite.position, Quaternion.identity);
 					pos8Toss = true;
+					player1.playerOneFoodCount--;
+					spriteCheck ();
 					i++;
 					Debug.Log ("Player One is throwing at player2 pos8");
 					if(i == 3) {
@@ -182,6 +185,7 @@ public class ExecutionScript : MonoBehaviour {
 					Instantiate(food2, playerOneSprite.position, Quaternion.identity);
 					pos9Toss = true;
 					player1.playerOneFoodCount--;
+					spriteCheck ();
 					i++;
 					Debug.Log ("Player One is throwing at player2 pos9");
 					if(i == 3) {
@@ -195,6 +199,7 @@ public class ExecutionScript : MonoBehaviour {
 					Instantiate(food2, playerOneSprite.position, Quaternion.identity);
 					pos10Toss = true;
 					player1.playerOneFoodCount--;
+					spriteCheck ();
 					i++;
 					Debug.Log ("Player One is throwing at player2 pos10");
 					if(i == 3) {
@@ -286,6 +291,7 @@ public class ExecutionScript : MonoBehaviour {
 					Instantiate(food, playerTwoSprite.position, Quaternion.identity);
 					pos1Toss = true;
 					player2.playerTwoFoodCount--;
+					spriteCheck ();
 					j++;
 					Debug.Log ("Player two is throwing at player1 pos1");
 					if(j == 3) {
@@ -298,6 +304,7 @@ public class ExecutionScript : MonoBehaviour {
 					Instantiate(food, playerTwoSprite.position, Quaternion.identity);
 					pos2Toss = true;
 					player2.playerTwoFoodCount--;
+					spriteCheck ();
 					j++;
 					Debug.Log ("Player two is throwing at player1 pos2");
 					if(j == 3) {
@@ -310,6 +317,7 @@ public class ExecutionScript : MonoBehaviour {
 					Instantiate(food, playerTwoSprite.position, Quaternion.identity);
 					pos3Toss = true;
 					player2.playerTwoFoodCount--;
+					spriteCheck ();
 					j++;
 					Debug.Log ("Player two is throwing at player1 pos3");
 					if(j == 3) {
@@ -322,6 +330,7 @@ public class ExecutionScript : MonoBehaviour {
 					Instantiate(food, playerTwoSprite.position, Quaternion.identity);
 					pos4Toss = true;
 					player2.playerTwoFoodCount--;
+					spriteCheck ();
 					j++;
 					Debug.Log ("Player two is throwing at player1 pos4");
 					if(j == 3) {
@@ -334,6 +343,7 @@ public class ExecutionScript : MonoBehaviour {
 					Instantiate(food, playerTwoSprite.position, Quaternion.identity);
 					pos5Toss = true;
 					player2.playerTwoFoodCount--;
+					spriteCheck ();
 					j++;
 					Debug.Log ("Player two is throwing at player1 pos5");
 					if(j == 3) {
